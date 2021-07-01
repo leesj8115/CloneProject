@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<th:block th:include="/common/commons::head"></th:block>
 	<title>클론 코딩 - LSNmall : FAQ</title>
@@ -15,9 +15,13 @@
                 <!-- menu.html 의 내용을 가져옴 -->
             </nav>
             <div id="main-page">
-                <h1>현재 페이지의 메인 화면</h1>
+                <h1>좌측 메뉴를 제외한 메인 화면</h1>
                 <section id="main-title">
-                    <p>FAQ 게시판</p>
+                    <span>FAQ 게시판</span>
+                    <th:block sec:authorize="hasRole('ADMIN')">
+						<!-- 로그인 성공했을 경우 -->
+                        <a href="/cs/faq/write">FAQ 작성</a>
+					</th:block>
                 </section>
                 <section id="faq-search">
                     <h1>FAQ 검색</h1>
@@ -28,57 +32,44 @@
                     </div>
                 </section>
                 <section id="faq-board">
+                    <ul id="faq-tag" class="flex">
+                        <li>회원</li>
+                        <li>배송</li>
+                        <li>주문/결제</li>
+                        <li>교환/반품/취소</li>
+                        <li>쿠폰/포인트</li>
+                        <li>상품</li>
+                    </ul>
                     <table>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성일</th>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>내용</th>
+                                <th><!-- + , - 기호 --></th>
+                            </tr>
+                        </thead>
+                        <tbody id="faq-data">
+                            <!-- ajax를 통해 가져온 데이터 출력 -->
+                            <!--
+                                tr
+                                    td 번호
+                                    td
+                                        p 분류
+                                        span.question-title Q
+                                        span.question-title 제목
+                                    td
+                                        div.icon-pn
+                                tr
+                                tr
+                                    td
+                                    td
+                                        span.answer A
+                                        span.answer-content 내용
+                                    td
+                                tr
+
+                            -->
+                        </tbody>
                     </table>
                 </section>
             </div>

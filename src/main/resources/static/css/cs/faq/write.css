@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url("/css/common.css");
+@import url("/css/cs/menu.css");
+/* 고객센터의 index */
+
+main>.wrap {
+    width: 1280px;
+    padding: 20px 40px;
+    margin: 0 auto;
+}
+
+/*
+ header
+*/
+
+#main-page {
+    padding: 40px;
+    border-left: 1px solid #999;
+}
+#main-title {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+#main-title span {
+    font-size: 44px;
+    font-weight: 700;
+}
+
+#faq-input {
+    width: 800px;
+    background-color: #eee;
+}
+
+#faq-input p {
+    padding: 1em;
+}
+
+#faq-input p select {
+    margin-left: 1em;
+    font-size: 16px;
+}
+
+#faq-input p label {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#faq-input p #question {
+    width: 92%;
+    height: 2em;
+    margin-left: 1em;
+    font-size: 16px;
+    padding: 0.5em;
+}
+
+#faq-input p #answer {
+    width: 100%;
+    height: 10em;
+    font-size: 16px;
+    padding: 0.5em;
+    resize: none;
+}
+
+#faq-input p button {
+    width: 100%;
+    padding: 1em 0;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}

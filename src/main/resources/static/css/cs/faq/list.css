@@ -17,10 +17,24 @@ main>.wrap {
     padding: 40px;
     border-left: 1px solid #999;
 }
+#main-title {
+    display: flex;
+    justify-content: space-between;
+}
 
-#main-title p {
+#main-title span {
     font-size: 44px;
     font-weight: 700;
+}
+
+/* 관리자만 보이는 FAQ 작성 버튼 */
+#main-title a {
+    display: inline-block;
+    padding: 1em 2em;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #000;
 }
 
 /*
@@ -66,6 +80,27 @@ main>.wrap {
     border: none;
 }
 
+#faq-board #faq-tag {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+#faq-board #faq-tag li {
+    flex: 1;
+    padding: 1em;
+    text-align: center;
+    color: #999;
+    border: 1px solid #999;
+    border-bottom: 1px solid #000;
+}
+
+#faq-board #faq-tag li.clicked {
+    color: #000;
+    font-weight: 700;
+    border: 1px solid #000;
+    border-bottom: none;
+}
+
 #faq-board table {
     width: 100%;
     border-collapse: collapse;
@@ -91,7 +126,7 @@ main>.wrap {
 
 #faq-board table tr th:nth-child(2),
 #faq-board table tr td:nth-child(2) {
-    width: 75%;
+    width: 85%;
     font-weight: 700;
 }
 
@@ -101,9 +136,68 @@ main>.wrap {
 
 #faq-board table tr th:nth-child(3),
 #faq-board table tr td:nth-child(3) {
-    width: 15%;
+    width: 5%;
 }
 
 #faq-board table tr td:nth-child(3) {
     color: #666;
+}
+
+.question {
+    font-size: 22px;
+    font-weight: 700;
+    margin-right: 0.5em;
+}
+
+.answer {
+    font-size: 22px;
+    font-weight: 700;
+    color: #E76C1F;
+    margin-right: 0.5em;
+}
+
+#faq-board table tbody tr td .question-text {
+    color: #222;
+    font-size: 13px;
+}
+
+#faq-board table tbody tr td .icon-pn {
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-image: url("/images/cs/icon-plus.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#faq-board table tbody tr.clicked td .icon-pn {
+    background-image: url("/images/cs/icon-minus.png");
+}
+
+#faq-board table tbody tr.faq-content {
+    background-color: #eee;
+}
+
+#faq-board table tbody tr td .answer-text {
+    color: #333;
+}
+
+#faq-board table tbody tr td #page-list {
+    justify-content: center;
+}
+
+#faq-board table tbody tr:last-child td {
+    border: none;
+}
+
+#faq-board table tbody tr td #page-list li button {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin:0.5em;
+    padding: 0.5em 0.7em;
+    background-color: #000;
+    border: none;
+    cursor: pointer;
 }

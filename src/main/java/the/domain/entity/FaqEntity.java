@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Getter
-//@Entity
+@Entity
 public class FaqEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- ajax를 통해 뿌려줄 데이터 -->
+    <th:block th:each="dto : ${list}">
+        <tr class="faq-subject">
+            <td th:text="${dto.no}"></td>
+            <td>
+                <p th:text="${dto.division}"></p>
+                <span class="question">Q</span>
+                <span class="question-text" th:text="${dto.question}">
+                    <!-- 질문 내용 -->
+                </span>
+            </td>
+            <td>
+                <div class="icon-pn"><!-- +, - 아이콘 이미지 --></div>
+            </td>
+        </tr>
+        <tr class="faq-content">
+            <td><!-- 미사용 --></td>
+            <td>
+                <span class="answer">A</span>
+                <span class="answer-text" th:text="${dto.answer}">
+                    <!-- 답변 내용 -->
+                </span>
+            </td>
+            <td><!-- 미사용 --></td>
+        </tr>
+    </th:block>
+    <tr>
+        <td colspan="3">
+            <ul id="page-list" class="flex">
+                <li th:each="pno : ${#numbers.sequence(1,pageTotal)}">
+                    <button type="button">[[${pno}]]</button>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</html>

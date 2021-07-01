@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<th:block th:include="/common/commons::head"></th:block>
-	<title>클론 코딩 - LSNmall : FAQ</title>
-	<link rel="stylesheet" href="/css/cs/faq.css">
-	<script src="/js/cs/faq.js"></script>
+	<title>클론 코딩 - LSNmall : FAQ - 작성 페이지</title>
+	<link rel="stylesheet" href="/css/cs/faq/write.css">
+	<!-- <script src="/js/cs/faq.js"></script> -->
 </head>
 <body>
 	<header th:insert="/common/commons::header"></header>
@@ -15,71 +15,36 @@
                 <!-- menu.html 의 내용을 가져옴 -->
             </nav>
             <div id="main-page">
-                <h1>현재 페이지의 메인 화면</h1>
+                <h1>좌측 메뉴를 제외한 메인 화면</h1>
                 <section id="main-title">
-                    <p>FAQ 게시판</p>
+                    <span>FAQ 작성</span>
                 </section>
-                <section id="faq-search">
-                    <h1>FAQ 검색</h1>
-                    <div class="wrap flex">
-                        <span>FAQ SEARCH</span>
-                        <input type="text"/>
-                        <button type="button">검색</button>
-                    </div>
-                </section>
-                <section id="faq-board">
-                    <table>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성일</th>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>[공지] 대충 적절한 제목</td>
-                            <td>2021.06.17</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>[공지] 대충 적절한 제목2</td>
-                            <td>2021.06.14</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>[공지] 대충 적절한 제목3</td>
-                            <td>2021.06.11</td>
-                        </tr>
-                    </table>
+                <section id="faq-input">
+                    <h1>FAQ 작성</h1>
+                    <form action="/cs/faq/write" method="post">
+                        <p>
+                            <label for="division">분류</label>
+                            <select id="division" name="division" required>
+                                <option value="회원">회원</option>
+                                <option value="배송">배송</option>
+                                <option value="주문/결제">주문/결제</option>
+                                <option value="교환/반품/취소">교환/반품/취소</option>
+                                <option value="쿠폰/포인트">쿠폰/포인트</option>
+                                <option value="상품">상품</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="question">질문</label>
+                            <input type="text" id="question" name="question" required>
+                        </p>
+                        <p>
+                            <label for="answer">답변</label>
+                            <textarea id="answer" name="answer" required></textarea>
+                        </p>
+                        <p>
+                            <button type="submit">저장</button>
+                        </p>
+                    </form>
                 </section>
             </div>
 		</div>
