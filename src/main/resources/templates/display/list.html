@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - 리스트</title>
+	<link rel="stylesheet" href="/css/display/list.css">
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<div class="wrap">
+		<h1>상품 목록</h1>
+			<section id="title">
+				<h1>상품 목록 분류</h1>
+				<p>신발 혹은 의류 혹은 용품 (일단 신발)</p>
+				<div>
+					<!-- 신발, 의류, 용품에 따라 다른 메뉴 항목 출력 -->
+					<ul>
+						<li>ALL</li>
+						<li>워킹화</li>
+						<li>러닝화</li>
+						<li>등산/트래킹화</li>
+						<li>스니커즈</li>
+						<li>샌들/슬리퍼</li>
+						<li>스포츠화</li>
+						<li>기타</li>
+					</ul>
+				</div>
+			</section>
+			<section id="item-list">
+				<h1>상품 나열 영역</h1>
+				<div class="wrap">
+					<!-- 한 줄에 상품은 4개씩 -->
+					<table>
+						<tr>
+							<td>
+								<img src="/images/display/item-1-1.jpg">
+								<p>
+									<!-- 남, 여 표시 구간-->
+									남/여
+								</p>
+								<p class="item-brand">PRO-SPECS</p>
+								<p>
+									<span class="item-tag">[오리지널 라인]</span>
+									<span class="item-name">빅스타 106</span>
+								</p>
+								<p>
+									<span class="item-original-price">&#92;79,000</span>
+									<sapn class="item-sale-price"></sapn>
+								</p>
+								<p>
+									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
+									<span>쿠폰</span>
+								</p>
+							</td>
+							<td>
+								<img src="/images/display/item-1-1.jpg">
+								<p>
+									<!-- 남, 여 표시 구간-->
+									남/여
+								</p>
+								<p class="item-brand">PRO-SPECS</p>
+								<p>
+									<span class="item-tag">[오리지널 라인]</span>
+									<span class="item-name">빅스타 106</span>
+								</p>
+								<p>
+									<span class="item-original-price">&#92;79,000</span>
+									<sapn class="item-sale-price"></sapn>
+								</p>
+								<p>
+									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
+									<span>쿠폰</span>
+								</p>
+							</td>
+							<td>
+								<img src="/images/display/item-1-1.jpg">
+								<p>
+									<!-- 남, 여 표시 구간-->
+									남/여
+								</p>
+								<p class="item-brand">PRO-SPECS</p>
+								<p>
+									<span class="item-tag">[오리지널 라인]</span>
+									<span class="item-name">빅스타 106</span>
+								</p>
+								<p>
+									<span class="item-original-price">&#92;79,000</span>
+									<sapn class="item-sale-price"></sapn>
+								</p>
+								<p>
+									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
+									<span>쿠폰</span>
+								</p>
+							</td>
+							<td>
+								<img src="/images/display/item-1-1.jpg">
+								<p>
+									<!-- 남, 여 표시 구간-->
+									남/여
+								</p>
+								<p class="item-brand">PRO-SPECS</p>
+								<p>
+									<span class="item-tag">[오리지널 라인]</span>
+									<span class="item-name">빅스타 106</span>
+								</p>
+								<p>
+									<span class="item-original-price">&#92;79,000</span>
+									<sapn class="item-sale-price"></sapn>
+								</p>
+								<p>
+									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
+									<span>쿠폰</span>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+	<link rel="stylesheet" href="/css/common.css">
+	<script src="/js/common.js"></script>
+	
+</head>
+<body>
+	<header th:fragment="header">
+		<h1>상단 메뉴</h1>
+		<div class="wrap flex column">
+			<section id="logo-line">
+				<div class="left flex">
+					<a id="logo-img" href="/"><!-- 로고 영역 --></a>
+					<form>
+						<!-- 검색창 영역 -->
+						<input type="text" name="search" placeholder="건강증진 노하우 남기고, 한뿌리 세트 받자!"/>
+						<button type="submit"><!-- 돋보기 아이콘 --><i class="fas fa-search"></i></button>
+					</form>
+				</div>
+				<div class="right">
+					<ul class="flex">
+						<th:block sec:authorize="isAnonymous()">
+						<!-- 아직 로그인하지 않아 권한이 없을 경우 -->
+							<li>
+								<a href="/log/login">로그인</a>
+							</li>
+							<li>
+								<a href="/log/join">회원가입</a>
+							</li>
+						</th:block>
+						<th:block sec:authorize="isAuthenticated()">
+						<!-- 로그인 성공했을 경우 -->
+							<li>
+								<span sec:authentication="principal.name"></span>
+								<span>님</span>
+							</li>
+							<li>
+								<a href="/logout">로그아웃</a>
+							</li>
+						</th:block>
+						<li><a href="/display/list">마이페이지</a></li>
+						<li><a href="#"><!-- 장바구니 아이콘 --><i class="fas fa-shopping-bag"></i></a></li>
+					</ul>
+				</div>
+			</section>
+			<hr>
+			<section id="navi-menu" class="flex">
+				<div  class="left">
+					<ul class="flex">
+						<li>남성</li>
+						<li>여성</li>
+						<li>아동</li>
+						<li id="ico-navi"><!-- 프로스펙스 오리지널 로고 --></li>
+						<li>세일</li>
+					</ul>
+				</div>
+				<div  class="right">
+					<ul class="flex">
+						<li>브랜드</li>
+						<li>스포츠</li>
+						<li>스페셜존</li>
+					</ul>
+				</div>
+			</section>
+			<section id="navi-menu-all">
+				<h1>메뉴 별 세부 항목</h1>
+				<div class="wrap">
+					<!-- 남자에 대한 세부 항목-->
+					<table>
+						<tr>
+							<th>HOT SPOT</th>
+							<th>신발</th>
+							<th>의류</th>
+							<th>용품</th>
+							<th>추천 기획전</th>
+						</tr>
+						<tr>
+							<td>
+								<!-- HOT SPOT의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">신상품</a></li>
+									<li><a href="#">온라인 단독</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 신발의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">워킹화</a></li>
+									<li><a href="#">러닝화</a></li>
+									<li><a href="#">등산/트래킹화</a></li>
+									<li><a href="#">스니커즈</a></li>
+									<li><a href="#">샌들/슬리퍼</a></li>
+									<li><a href="#">스포츠화</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 의류의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">다운/패딩</a></li>
+									<li><a href="#">아우터</a></li>
+									<li><a href="#">트레이닝</a></li>
+									<li><a href="#">베스트</a></li>
+									<li><a href="#">긴팔티셔츠</a></li>
+									<li><a href="#">반팔티셔츠</a></li>
+									<li><a href="#">긴바지</a></li>
+									<li><a href="#">반바지</a></li>
+									<li><a href="#">비치웨어/수영복</a></li>
+									<li><a href="#">언더웨어</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 용품의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">가방</a></li>
+									<li><a href="#">모자/장갑</a></li>
+									<li><a href="#">양말</a></li>
+									<li><a href="#">기타</a></li>
+									<li><a href="#">등산/캠핑</a></li>
+									<li><a href="#">골프</a></li>
+									<li><a href="#">피트니스</a></li>
+									<li><a href="#">생활스포츠</a></li>
+									<li><a href="#">바이크</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 추천기획전의 이미지 -->
+								<div><!-- 이미지 삽입 영역 --></div>
+							</td>
+						</tr>
+
+					</table>
+					<!-- 여자에 대한 세부 항목 -->
+					<table>
+						<tr>
+							<th>HOT SPOT</th>
+							<th>신발</th>
+							<th>의류</th>
+							<th>용품</th>
+							<th>추천 기획전</th>
+						</tr>
+						<tr>
+							<td>
+								<!-- HOT SPOT의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">신상품</a></li>
+									<li><a href="#">온라인 단독</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 신발의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">워킹화</a></li>
+									<li><a href="#">러닝화</a></li>
+									<li><a href="#">등산/트래킹화</a></li>
+									<li><a href="#">스니커즈</a></li>
+									<li><a href="#">샌들/슬리퍼</a></li>
+									<li><a href="#">스포츠화</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 의류의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">다운/패딩</a></li>
+									<li><a href="#">아우터</a></li>
+									<li><a href="#">트레이닝</a></li>
+									<li><a href="#">베스트</a></li>
+									<li><a href="#">긴팔티셔츠</a></li>
+									<li><a href="#">반팔티셔츠</a></li>
+									<li><a href="#">긴바지</a></li>
+									<li><a href="#">반바지</a></li>
+									<li><a href="#">비치웨어/수영복</a></li>
+									<li><a href="#">언더웨어</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 용품의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">가방</a></li>
+									<li><a href="#">모자/장갑</a></li>
+									<li><a href="#">양말</a></li>
+									<li><a href="#">기타</a></li>
+									<li><a href="#">등산/캠핑</a></li>
+									<li><a href="#">골프</a></li>
+									<li><a href="#">피트니스</a></li>
+									<li><a href="#">생활스포츠</a></li>
+									<li><a href="#">바이크</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 추천기획전의 이미지 -->
+								<div><!-- 이미지 삽입 영역 --></div>
+							</td>
+						</tr>
+					</table>
+					<!-- 아동에 대한 세부 항목-->
+					<table>
+						<tr>
+							<th>HOT SPOT</th>
+							<th>신발</th>
+							<th>의류</th>
+							<th>용품</th>
+							<th>추천 기획전</th>
+						</tr>
+						<tr>
+							<td>
+								<!-- HOT SPOT의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">신상품</a></li>
+									<li><a href="#">온라인 단독</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 신발의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">운동화</a></li>
+									<li><a href="#">샌들/슬리퍼</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 의류의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">다운/패딩</a></li>
+									<li><a href="#">긴팔티셔츠</a></li>
+									<li><a href="#">반팔티셔츠</a></li>
+									<li><a href="#">긴바지</a></li>
+									<li><a href="#">반바지</a></li>
+									<li><a href="#">비치웨어/수영복</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 용품의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">가방</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 추천기획전의 이미지 -->
+								<div><!-- 이미지 삽입 영역 --></div>
+							</td>
+						</tr>
+					</table>
+					<!-- 프로스펙스 오리지널에 대한 세부 항목-->
+					<table>
+						<tr>
+							<th>HOT SPOT</th>
+							<th>신발</th>
+							<th>의류</th>
+							<th>용품</th>
+							<th>추천 기획전</th>
+						</tr>
+						<tr>
+							<td>
+								<!-- HOT SPOT의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">신상품</a></li>
+									<li><a href="#">온라인 단독</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 신발의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">콜라보레이션</a></li>
+									<li><a href="#">오리지널 스니커즈</a></li>
+									<li><a href="#">오리지널 스포츠화</a></li>
+									<li><a href="#">오리지널 런닝화</a></li>
+									<li><a href="#">오리지널 아동화</a></li>
+									<li><a href="#">오리지널 슬라이드/샌들</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 의류의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">콜라보레이션</a></li>
+									<li><a href="#">오리지널 상의</a></li>
+									<li><a href="#">오리지널 하의</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 용품의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">콜라보레이션</a></li>
+									<li><a href="#">오리지널 가방</a></li>
+									<li><a href="#">오리지널 악세서리</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 추천기획전의 이미지 -->
+								<div><!-- 이미지 삽입 영역 --></div>
+							</td>
+						</tr>
+					</table>
+					<!-- 세일에 대한 세부 항목 -->
+					<table>
+						<tr>
+							<th>HOT SPOT</th>
+							<th>신발</th>
+							<th>의류</th>
+							<th>용품</th>
+							<th>추천 기획전</th>
+						</tr>
+						<tr>
+							<td>
+								<!-- HOT SPOT의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">온라인 단독</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 신발의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">워킹화</a></li>
+									<li><a href="#">러닝화</a></li>
+									<li><a href="#">등산/트래킹화</a></li>
+									<li><a href="#">스니커즈</a></li>
+									<li><a href="#">샌들/슬리퍼</a></li>
+									<li><a href="#">스포츠화</a></li>
+									<li><a href="#">아동화</a></li>
+									<li><a href="#">기타</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 의류의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">다운/패딩</a></li>
+									<li><a href="#">아우터</a></li>
+									<li><a href="#">트레이닝</a></li>
+									<li><a href="#">베스트</a></li>
+									<li><a href="#">긴팔티셔츠</a></li>
+									<li><a href="#">반팔티셔츠</a></li>
+									<li><a href="#">긴바지</a></li>
+									<li><a href="#">반바지</a></li>
+									<li><a href="#">비치웨어/수영복</a></li>
+									<li><a href="#">언더웨어</a></li>
+									<li><a href="#">아동복</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 용품의 세부 메뉴 -->
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">가방</a></li>
+									<li><a href="#">모자/장갑</a></li>
+									<li><a href="#">양말</a></li>
+									<li><a href="#">마스크</a></li>
+									<li><a href="#">피트니스</a></li>
+									<li><a href="#">생활스포츠</a></li>
+								</ul>
+							</td>
+							<td>
+								<!-- 추천기획전의 이미지 -->
+								<div><!-- 이미지 삽입 영역 --></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</section>
+		</div>
+	</header>
+	<main>
+		<h1>메인</h1>
+		<div class="wrap">
+		
+		</div>
+	</main>
+	<footer th:fragment="footer">
+		<h1>하단 영역</h1>
+		<div class="wrap flex">
+			<section id="company">
+				<h1>기업 정보</h1>
+				<ul>
+					<li>
+						(주)LS네트웍스 | 대표이사 : 구자용, 문성준 | 사업자등록번호 : 622-81-04805 <br>
+						통신판매업 신고번호 : 2016-경남김해-0229 <br>
+						경상남도 김해시 호계로 428, 1층(부원동) 개인정보관리 책임자 : 예재승
+					</li>
+					<li>
+						<span>SGI서울보증안내</span>
+						<a href="/">서비스 가입 사실 확인증 보기 &gt;</a>
+					</li>
+					<li>
+						고객님께서 안전거래를 위해 현금 등으로 결제하신 경우,<br>
+						저희 쇼핑몰에서 가입한 소비자피해보상보험 서비스를 이용하실 수 있습니다.
+					</li>
+					<li>
+						COPYRIGHT&copy; LS NETWORKS CO. ALL RIGHTS RESERVED.
+					</li>
+				</ul>
+			</section>
+			<section id="information" class="flex">
+				<h1>문의처</h1>
+				<div>INFORMATION</div>
+				<ul class="flex column">
+					<li><a href="/cs/index">고객센터</a></li>
+					<li><a href="/cs/afterservice">A/S 안내</a></li>
+					<li><a href="/cs/qna">QnA 문의</a></li>
+					<li><a href="#">매장안내</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li class="white-font"><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">파트너사</a></li>
+					<li><a href="/cs/notice">공지사항</a></li>
+				</ul>
+			</section>
+			<section id="contact" class="flex">
+				<h1>소통 수단</h1>
+				<div>CONTACT US</div>
+				<ul class="flex column">
+					<li>
+						<p class="white-font">구매/배송 문의</p>
+						<span>080-710-1020</span>
+					</li>
+					<li>
+						<p class="white-font">상품정보 / AS문의</p>
+						<span>080-023-1020</span>
+					</li>
+					<li>
+						MON-FRI 09:00 - 18:00<br>
+						(주말, 공휴일 휴무)<br>
+						BREAK TIME : 12:30 - 13:30<br>
+					</li>
+				</ul>
+			</section>
+			<section id="site-link" class="flex">
+				<h1>외부 링크(SNS 등)</h1>
+				<div class="white-font">LS복지몰</div>
+				<ul class="flex">
+					<li><a href="#"><!-- 인스타그램 아이콘 --></a></li>
+					<li><a href="#"><!-- 유튜브 아이콘 --></a></li>
+					<li><a href="#"><!-- 페이스북 아이콘 --></a></li>
+				</ul>
+			</section>
+		</div>
+	</footer>
+</body>
+</html>

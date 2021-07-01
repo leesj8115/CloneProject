@@ -1,0 +1,230 @@
+@charset "UTF-8";
+@import url(/css/common.css);
+
+main>.wrap {
+    min-width: 1280px;
+    margin: 0 auto;
+}
+
+main>.wrap section:not(:first-child) {
+    margin-bottom: 50px;
+}
+
+#visual {
+    overflow: hidden;
+}
+
+#visual>.wrap .visual-image {
+    width: 400%;
+    height: 500px;
+}
+
+#visual>.wrap .visual-image li {
+	background-position: center;
+    background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+}
+
+#visual>.wrap .visual-image li[value="0"] {
+    background-image: url("/images/visual/visual-1.png");
+}
+
+#visual>.wrap .visual-image li[value="1"] {
+    background-image: url("/images/visual/visual-2.png");
+}
+
+#visual>.wrap .visual-image li[value="2"] {
+    background-image: url("/images/visual/visual-3.png");
+}
+
+#visual>.wrap .visual-image li[value="3"] {
+    background-image: url("/images/visual/visual-4.jpg");
+}
+
+#visual>.wrap .bullet {
+    margin: 10px auto 20px;
+}
+
+#visual>.wrap .bullet li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #d4d4d4;
+    background-color: #d4d4d4;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+#visual>.wrap .bullet li.target {
+    border: 1px solid #f77527;
+    background-color: #f77527;
+}
+
+#project>.wrap {
+    width:1200px;
+}
+
+#project>.wrap ul {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+}
+
+#project>.wrap ul li {
+    display: inline-block;
+    width: 392px;
+    height: 360px;
+}
+
+#project>.wrap ul li:nth-child(1) {
+    background: url("/images/index/project-1.png");
+}
+
+#project>.wrap ul li:nth-child(2) {
+    background: url("/images/index/project-2.png");
+}
+
+#project>.wrap ul li:nth-child(3) {
+    background: url("/images/index/project-3.png");
+}
+
+#project>.wrap ul li div {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+#project>.wrap ul li div span {
+    margin: 0 auto;
+    color: #fff;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#project>.wrap ul li div span:nth-child(1) {
+    font-size: 14px;
+    padding: 5px 5px;
+    margin: 70px auto 20px;
+    border-bottom: 1px solid #fff;
+}
+
+#project>.wrap ul li div span:nth-child(2) {
+    font-size: 38px;
+    font-weight: 800;
+    margin: 20px auto;
+}
+
+#project>.wrap ul li div span:nth-child(3) {
+    font-size: 16px;
+    margin: 20px auto;
+}
+
+/* project의 호버 시 처리 */
+#project>.wrap ul li:hover div {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#project>.wrap ul li:hover div span {
+    opacity: 1;
+}
+
+#magazine>.wrap {
+    margin: 0 auto;
+}
+
+#magazine>.wrap a {
+    display: block;
+    width: 1200px;
+    height: 200px;
+    background-image: url("/images/index/magazine.jpg");
+}
+
+#tag-item>.wrap {
+    margin: 0 auto;
+}
+
+#tag-item>.wrap>ul {
+    width: 1200px;
+}
+
+#tag-item>.wrap .menu li {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px 36px;
+    width: 25%;
+    border: 1px solid #222;
+    text-align: center;
+    cursor: pointer;
+}
+
+#tag-item>.wrap .menu li.clicked {
+    background-color: #222;
+    color: #fff;
+}
+
+#tag-item>.wrap .item li div {
+    width: 20%;
+    text-align: center;
+}
+
+#tag-item>.wrap .item li div p.item-name {
+    font-size: 14px;
+    margin-bottom: 0.5em;
+}
+
+#tag-item>.wrap .item li div p.item-price {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#big-project>.wrap {
+    width:1200px;
+    height:580px;
+    background: url("/images/index/big-project.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#big-project>.wrap div {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+#big-project>.wrap div span {
+    margin: 0 auto;
+    color: #fff;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#big-project>.wrap div span:nth-child(1) {
+    font-size: 14px;
+    padding: 5px 5px;
+    margin: 15em auto 20px;
+    border-bottom: 1px solid #fff;
+}
+
+#big-project>.wrap div span:nth-child(2) {
+    font-size: 38px;
+    font-weight: 800;
+    margin: 20px auto;
+}
+
+#big-project>.wrap div span:nth-child(3) {
+    font-size: 16px;
+    margin: 20px auto;
+}
+
+/* big-project의 호버 시 처리 */
+#big-project>.wrap:hover div {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#big-project>.wrap:hover div span {
+    opacity: 1;
+}

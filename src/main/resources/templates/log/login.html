@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - 로그인</title>
+	<link rel="stylesheet" href="/css/log/login.css">
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<div class="wrap">
+			<section id="title">
+				<p>LOGIN</p>
+				<div>
+					<span>[[${guideMsg}]]</span>
+				</div>
+			</section>
+			<section id="login-form">
+				<div class="wrap">
+					<form class="flex column center" action="/login" method="POST">
+						<input type="text" name="username" placeholder="아이디를 이메일 형식으로 입력해 주세요.">
+						<input type="password" name="password" placeholder="비밀번호를 입력해 주세요." />
+						<input type="checkbox" name="ch"/>
+						<ul class="flex">
+							<li>
+								<input type="checkbox" name="ch" id="ch"/>
+								<label for="ch"><span>아이디 저장</span></label>
+							</li>
+							<li>
+								<a href="#">아이디 / 비밀번호 찾기 &gt;</a>
+							</li>
+						</ul>
+						<button type="submit">로그인</button>
+					</form>
+					<div id="social-login" class="flex">
+						<a href="/oauth2/authorization/google" id="btn-google">구글 로그인</a>
+						<a href="/oauth2/authorization/naver" id="btn-naver">
+							<img src="/images/login/icon-naver.png"/>
+							<span>네이버 로그인</span>
+						</a>
+						<a href="/oauth2/authorization/kakao" id="btn-kakao">카카오 로그인</a>
+					</div>
+				</div>
+			</section>
+			<section id="create-id">
+				<div class="wrap flex">
+					<div>
+						LSNmall의 회원이 되시면<br>
+						더 많은 혜택이 있습니다.
+					</div>
+					<a href="/log/join">회원가입</a>
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

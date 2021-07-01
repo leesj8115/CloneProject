@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - 회원가입</title>
+	
+    <link rel="stylesheet" href="/css/log/join.css">
+    <script src="/js/log/join.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<div class="wrap">
+			<section id="title">
+				<p>Join</p>
+                <hr>
+			</section>
+			<section id="input-form">
+                <h1>회원정보 입력 영역</h1>
+                <div class="flex">
+                    <p>회원 가입을 위한 정확한 정보를 입력해주세요.</p>
+                    <p>
+                        <span class="red-star">	&#42;</span>
+                        <span>필수 입력 정보</span>
+                    </p>
+                </div>
+                <form id="join-form" action="/log/join" method="POST">
+                    <table>
+                        <tr>
+                            <!-- 아이디 -->
+                            <th>
+                                <label for="email-id">
+                                    <span>이메일 (ID)</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="text" id="email-id" name="emailId" class="input-text" pattern="[a-zA-Z0-9]{4, 12}" required>
+                                    <span>&#64;</span>
+                                    <input type="text" id="email-domain" name="emailDomain" class="input-text" required>
+                                    <select id="domain-list" name="domainList">
+                                        <option value="none">선택하세요</option>
+                                        <option value="naver.com">naver.com</option>
+                                        <option value="daum.net">daum.net</option>
+                                        <option value="hanmail.net">hanmail.net</option>
+                                        <option value="gmail.com">gmail.com</option>
+                                        <option value="etc">기타(직접 입력)</option>
+                                    </select>
+                                    <span>4자 이상 12자 이하의 영문, 숫자로 입력해 주세요.</span>
+                                </p>
+                                <p>
+                                    <span id="id-msg" class="msg"></span>
+                                </p>
+                                <p class="ad">
+                                    <input type="radio" id="ad-email-agree" name="ad-email" value="true">
+                                    <label for="ad-email-agree">이메일 수신동의</label>
+                                    <input type="radio" id="ad-email-disagree" name="ad-email" value="false">
+                                    <label for="ad-email-disagree">이메일 수신거부</label>
+                                </p>
+                                <p>
+                                    <span>
+                                        * '이메일 수신동의', '문자(SMS) 수신동의'를 모두 한 뒤 가입한 경우, 
+                                        <strong>신규회원 금액 쿠폰 5종 패키지</strong>
+                                        (쇼핑백 최대 3만원 할인)를 드립니다.
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 비밀번호 -->
+                            <th>
+                                <label for="pw">
+                                    <span>비밀번호</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="password" id="pw" name="password" class="input-text" required>
+                                    <span>영문, 숫자 조합으로 8자 이상</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 비밀번호 확인 -->
+                            <th>
+                                <label for="pw-again">
+                                    <span>비밀번호 확인</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="password" id="pw-again" class="input-text" required>
+                                    <span>비밀번호 확인을 위해 다시 한 번 입력해 주세요.</span>
+                                </p>
+                                <p>
+                                    <!-- 비밀번호 확인 결과에 따른 안내문 출력 영역 -->
+                                    <span id="pw-msg" class="msg"></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 이름 -->
+                            <th>
+                                <label for="name">
+                                    <span>이름</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="text" id="name" name="name" class="input-text" required>
+                                </p>
+                                <p>
+                                    <!-- 이름 미입력에 따른 안내문 출력 영역 -->
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 휴대폰 -->
+                            <th>
+                                <label for="phone">
+                                    <span>휴대폰</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="tel" id="phone" name="phone" pattern="(010)-\d{3,4}-\d{4}" title="형식 010-0000-0000" class="input-text" required>
+                                	<span>010-0000-0000 형식으로 입력해 주세요.</span>
+                                </p>
+                                <p>
+                                    <!-- SMS 수신동의여부에 따른 안내문 출력 -->
+                                </p>
+                                <p class="ad">
+                                    <input type="radio" id="ad-sms-agree" name="ad-sms" value="true">
+                                    <label for="ad-sms-agree">SMS 수신동의</label>
+                                    <input type="radio" id="ad-sms-disagree" name="ad-sms" value="false">
+                                    <label for="ad-sms-disagree">SMS 수신거부</label>
+                                </p>
+                                <p>
+                                    <span>
+                                        * '이메일 수신동의', '문자(SMS) 수신동의'를 모두 한 뒤 가입한 경우, 
+                                        <strong>신규회원 금액 쿠폰 5종 패키지</strong>
+                                        (쇼핑백 최대 3만원 할인)를 드립니다.
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 생년월일 -->
+                            <th>
+                                <label for="birth">
+                                    <span>생년월일</span>
+                                    <span class="red-star">	&#42;</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p>
+                                    <input type="date" min="1900-01-01" max="9999-12-31" id="birth" name="birth" class="input-text" required>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 성별 (선택사항) -->
+                            <th>
+                                <label for="gender">
+                                    <span>성별</span>
+                                </label>
+                            </th>
+                            <td>
+                                <p id="gender">
+                                    <input type="radio" id="male" value="male" name="gender">
+                                    <label for="male">남자</label>
+                                    <input type="radio" id="female" value="female" name="gender">
+                                    <label for="female">여자</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- 휴면 방지 기간은 생략 -->
+                    </table>
+                </form>
+            </section>
+            <section id="agree">
+                <h1>약관동의 영역</h1>
+                <div>
+                    <p>회원 가입약관에 동의해 주세요.</p>
+                    <p>
+                        <input type="checkbox" id="agree-all"/>
+                        <label for="agree-all">전체 약관에 동의 (선택항목 포함)</label>
+                    </p>
+                </div>
+                <p>- 전체 약관 동의에 체크하시면 전체 약관에 일괄 동의됩니다.</p>
+                <p>- 등록하신 개인정보는 외부로 유출되지 않으며, 동의하지 않은 목적으로는 사용되지 않습니다.</p>
+                <ul>
+                    <li>
+                        <p>이용약관</p>
+                        <div>
+                            <th:block th:include="/common/terms::terms-using">
+                                <!-- 약관 들어가는 영역 -->
+                                <!-- p 큰 제목 -->
+                                <!-- dl>dt 조 제목 -->
+                                <!-- dl>dd 조 내용 -->
+                                <!-- dd span 주황색 강조 포인트 -->
+                            </th:block>
+                        </div>
+                        <input type="checkbox" id="terms-using">
+                        <label for="terms-using">LSNmall 이용약관에 동의합니다.</label>
+                    </li>
+                    <li class="term-table">
+                        <p>개인정보 수집 및 이용에 관한 동의</p>
+                        <div>
+                            <th:block th:include="/common/terms::terms-perinfo">
+                                <!-- 개인정보 수집 관련 약관 -->
+                                <!-- span 설명줄 -->
+                                <!-- table tr th 표 제목 -->
+                                <!-- table tr td 표 내용 -->
+                            </th:block>
+                        </div>
+                        <input type="checkbox" id="terms-perinfo">
+                        <label for="terms-perinfo">개인정보 수집 및 이용에 동의합니다.</label>
+                    </li>
+                    <li class="term-table">
+                        <p>개인정보 취급 위탁 동의</p>
+                        <div>
+                            <th:block th:include="/common/terms::terms-away"></th:block>
+                            <!-- 대충 약관 들어가는 영역 -->
+                            <!-- 표 들어감 -->
+                        </div>
+                        <input type="checkbox" id="terms-away">
+                        <label for="terms-away">개인정보의 취급 위탁에 동의합니다.</label>
+                    </li>
+                    <li>
+                        <p>개인정보 제3자 제공에 대한 동의 [선택, 미 동의 시에도 회원가입 가능]</p>
+                        <div>
+                            <th:block th:include="/common/terms::terms-thirdinfo"></th:block>
+                            <!-- 대충 약관 들어가는 영역 -->
+                            <!-- 여기는 줄바꿈만 잘해주면 됨 -->
+                        </div>
+                        <input type="checkbox" id="terms-thirdinfo">
+                        <label for="terms-thirdinfo">개인정보의 취급 위탁에 동의합니다.</label>
+                    </li>
+                </ul>
+            </section>
+            <button id="btn-submit" type="submit" form="join-form">JOIN</button>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title></title>
+</head>
+<body>
+	<nav th:fragment="menu">
+        <h1>고객센터 메뉴</h1>
+        <div class="wrap">
+            <p>CS CENTER</p>
+            <ul>
+                <li><a href="/cs/faq">FAQ</a></li>
+                <li><a href="/cs/qna">QnA 문의</a></li>
+                <li><a href="/cs/bonus">회원혜택</a></li>
+                <li><a href="/cs/groupbuying">단체주문</a></li>
+                <li><a href="/cs/afterservice">A/S 안내</a></li>
+                <li><a href="/cs/notice">NOTICE</a></li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,147 @@
+@charset "UTF-8";
+@import url(/css/common.css);
+
+main>.wrap {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+#title p {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    margin: 50px auto 30px;
+}
+
+#title div {
+    text-align: center;
+}
+
+#title div span {
+    font-size: 20px;
+    color: #f77527;
+}
+
+#login-form {
+    margin: 20px 0 40px;
+}
+
+#login-form>.wrap {
+    width: 550px;
+    margin: 0 auto;
+}
+
+#login-form>.wrap form input:not([type="checkbox"]) {
+    font-size: 16px;
+    padding: 1em 0.5em;
+    margin-bottom: 5px;
+    border: 1px solid #e9e9e9;
+}
+
+#login-form>.wrap form input:not([type="checkbox"]):focus {
+    outline: none;
+    border: 1px solid #f77527;
+}
+
+#login-form>.wrap form ul {
+    justify-content: space-between;
+    margin: 20px 0;
+    position: relative;
+    font-size: 14px;
+}
+
+/* checkbox 이미지를 통해 꾸미기 */
+/* 참고 : https://blog.naver.com/taz0505/221183561041 */ 
+input[type="checkbox"] {
+    display: none;
+}
+
+#login-form>.wrap form ul li input[type="checkbox"] + label {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url("/images/common/img-checkbox.png");
+    background-position: 0 0;
+    cursor: pointer;
+}
+
+#login-form>.wrap form ul li:first-child::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+#login-form>.wrap form ul li input[type="checkbox"]:checked + label {
+    background-image: url("/images/common/img-checkbox.png");
+    background-position: 0 -15px;
+} 
+
+#login-form>.wrap form ul li input[type="checkbox"] + label span {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    display: block;
+    color: #666;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#login-form>.wrap form ul li a {
+    color: #999;
+    font-size: 14px;
+}
+
+#login-form>.wrap form button {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 1em 2em;
+    background-color: #000;
+    border: none;
+    cursor: pointer;
+}
+
+#login-form>.wrap #social-login {
+    margin: 20px auto;
+    justify-content: space-between;
+}
+
+#login-form>.wrap #social-login a {
+    display: block;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    border: 1px solid #999;
+}
+
+#login-form>.wrap #social-login #btn-naver img {
+    width: 20px;
+    height: 20px;
+    align-content: baseline;
+}
+
+
+
+#create-id>.wrap {
+    width: 550px;
+    margin: 0 auto 40px;
+    padding-top: 40px;
+    border-top: 1px solid #e9e9e9;
+    justify-content: space-between;
+}
+
+#create-id>.wrap div {
+    margin: auto 0;
+    color: #999;
+    font-size: 1em;
+}
+
+#create-id>.wrap a {
+    display: block;
+    padding: 1em 1.5em;
+    font-weight: 700;
+    color: #fff;
+    background-color: #f77527;
+}

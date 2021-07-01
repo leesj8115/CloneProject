@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall : 공지사항</title>
+	<link rel="stylesheet" href="/css/cs/notice.css">
+	<script src="/js/cs/notice.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>공지사항</h1>
+		<div class="wrap flex">
+            <nav id="cs-menu" th:include="/cs/menu::menu">
+                <!-- menu.html 의 내용을 가져옴 -->
+            </nav>
+            <div id="main-page">
+                <h1>현재 페이지의 메인 화면</h1>
+                <section id="main-title">
+                    <p>NOTICE</p>
+                </section>
+                <section id="notice-search">
+                    <h1>FAQ 검색</h1>
+                    <div class="wrap flex">
+                        <span>NOTICE SEARCH</span>
+                        <input type="text"/>
+                        <button type="button">검색</button>
+                    </div>
+                </section>
+                <section id="notice-board">
+                    <table>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성일</th>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>[공지] 대충 적절한 제목</td>
+                            <td>2021.06.17</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>[공지] 대충 적절한 제목2</td>
+                            <td>2021.06.14</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>[공지] 대충 적절한 제목3</td>
+                            <td>2021.06.11</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>[공지] 대충 적절한 제목</td>
+                            <td>2021.06.17</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>[공지] 대충 적절한 제목2</td>
+                            <td>2021.06.14</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>[공지] 대충 적절한 제목3</td>
+                            <td>2021.06.11</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>[공지] 대충 적절한 제목</td>
+                            <td>2021.06.17</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>[공지] 대충 적절한 제목2</td>
+                            <td>2021.06.14</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>[공지] 대충 적절한 제목3</td>
+                            <td>2021.06.11</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

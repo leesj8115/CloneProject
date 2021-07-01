@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall</title>
+	<link rel="stylesheet" href="/css/index.css">
+	<script src="/js/index.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>메인</h1>
+		<div class="wrap">
+			<section id="visual">
+				<h1>비주얼 영역</h1>
+				<div class="wrap">
+					<ul class="visual-image flex">
+						<!-- 비주얼 이미지 리스트 -->
+						<li value="0"><!-- 비주얼 이미지 --></li>
+						<li value="1"><!-- 비주얼 이미지 --></li>
+						<li value="2"><!-- 비주얼 이미지 --></li>
+						<li value="3"><!-- 비주얼 이미지 --></li>
+					</ul>
+					<ul class="bullet flex center">
+						<!-- 불릿 리스트 -->
+						<li><!-- 점 --></li>
+						<li><!-- 점 --></li>
+						<li><!-- 점 --></li>
+						<li><!-- 점 --></li>
+					</ul>
+				</div>
+				
+			</section>
+			<section id="project" class="view-size">
+				<h1>프로젝트</h1>
+				<div class="wrap">
+					<ul>
+						<li>
+							<!-- 이미지는 li의 background로 삽입 -->
+							<div class="flex column">
+								<span>PRO-SPECS</span>
+								<span>SUMMER 2021</span>
+								<span>퍼포먼스 라인</span>
+							</div>
+						</li>
+						<li>
+							<div class="flex column">
+								<span>PRO-SPECS</span>
+								<span>온라인 단독</span>
+								<span>2021 S/S 5종 기획상품</span>
+							</div>
+						</li>
+						<li>
+							<div class="flex column">
+								<span>Collaboration</span>
+								<span>오리지널 	&times; 덴스</span>
+								<span>디자인 스튜디오 덴스와의 만남</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section id="magazine">
+				<h1>매거진</h1>
+				<div class="wrap view-size">
+					<a href="#"><!-- 메거진 이미지 영역 --></a>
+				</div>
+			</section>
+			<section id="tag-item">
+				<h1>태그별 추천 아이템</h1>
+				<div class="wrap view-size">
+					<ul class="menu flex">
+						<li class="clicked">#몽벨 #montbell</li>
+						<li>#오리지널 #클래식라인</li>
+						<li>#온라인단독 #사은품</li>
+						<li>#수영복 #래쉬가드</li>
+					</ul>
+					<ul class="item">
+						<li class="flex">
+							<!-- 1번 아이템에 대한 목록 -->
+							<div>
+								<img src="/images/index/teg/item-1-1.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-2.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">69,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-3.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-4.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-5.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+						</li>
+						<li class="flex">
+							<!-- 2번 아이템에 대한 목록 -->
+							<div>
+								<img src="/images/index/teg/item-2-1.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-2.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-3.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">69,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-4.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-5.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">55,200</p>
+							</div>
+						</li>
+						<li class="flex">
+							<!-- 3번 아이템에 대한 목록 -->
+							<div>
+								<img src="/images/index/teg/item-1-1.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-2.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">69,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-3.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-4.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-1-5.jpg"/>
+								<p class="item-name">몽벨</p>
+								<p class="item-price">39,000</p>
+							</div>
+						</li>
+						<li class="flex">
+							<!-- 4번 아이템에 대한 목록 -->
+							<div>
+								<img src="/images/index/teg/item-2-1.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-2.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-3.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">69,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-4.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">79,000</p>
+							</div>
+							<div>
+								<img src="/images/index/teg/item-2-5.jpg"/>
+								<p class="item-name">PRO-SPECS</p>
+								<p class="item-price">55,200</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section id="big-project" class="view-size">
+				<h1>프로젝트</h1>
+				<div class="wrap">
+					<!-- 이미지는 wrap의 background로 삽입 -->
+					<div class="flex column">
+						<span>PRO-SPECS Original</span>
+						<span>2021 SUMMER</span>
+						<span>오리지널 라인 썸머 오픈!</span>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>
