@@ -18,6 +18,7 @@ import the.domain.dto.FaqResultDto;
 import the.domain.entity.FaqEntity;
 import the.domain.entity.FaqRepository;
 
+
 @Slf4j
 @Service
 public class FaqServiceImpl implements FaqService {

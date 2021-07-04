@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(
 				"/", "/log/**", "/display/**",
 				"/cs/index", "/cs/notice", "/cs/faq/list", "/cs/faq", "/cs/faq/get").permitAll()
-			.antMatchers("/cs/faq/write", "/cs/faq/remove").hasRole("ADMIN")
+			.antMatchers("/cs/faq/write", "/cs/faq/remove", "/admin/**").hasRole("ADMIN")
 			.anyRequest().authenticated();
 	
 		// 로그인 설정

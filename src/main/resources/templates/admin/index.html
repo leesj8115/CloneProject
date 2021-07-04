@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall : 고객센터</title>
+	<link rel="stylesheet" href="/css/admin/index.css">
+	<script src="/js/admin/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>관리자 페이지</h1>
+		<div class="wrap flex">
+            <nav id="admin-menu" th:include="/admin/menu::menu">
+                <!-- menu.html 의 내용을 가져옴 -->
+            </nav>
+            <div id="main-page">
+                <h1>현재 페이지의 메인 화면</h1>
+                <section>
+                    <h1>공사중</h1>
+                    <p>공사중</p>
+                </section>
+            </div>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

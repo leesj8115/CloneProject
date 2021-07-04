@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall : 고객센터</title>
+	<link rel="stylesheet" href="/css/admin/file.css">
+	<script src="/js/admin/file.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>관리자 페이지 - 파일</h1>
+		<div class="wrap flex">
+            <nav id="admin-menu" th:include="/admin/menu::menu">
+                <!-- menu.html 의 내용을 가져옴 -->
+            </nav>
+            <div id="main-page">
+                <h1>파일 작성 화면</h1>
+                <section id="file-upload">
+                    <h1>파일 업로드 폼</h1>
+                    <form action="/admin/file/write" method="POST" enctype="multipart/form-data">
+                        <p>[[${msg}]]</p>
+                        <p>파일</p>
+                        <p>
+                            <input type="file" name="files"/>
+                        </p>
+                        <p>
+                            <input type="text" name="division" placeholder="분류">
+                        </p>
+                        <p>
+                            <button type="submit">업로드</button>
+                        </p>
+                    </form>
+                </section>
+                <section id="file-list">
+                    <ul>
+                        <li>대충 목록(공사중)</li>
+                    </ul>
+                </section>
+            </div>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

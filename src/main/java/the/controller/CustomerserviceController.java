@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.FaqDto;
-import the.domain.entity.FaqRepository;
 import the.service.FaqService;
 
 @Slf4j

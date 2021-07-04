@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title></title>
+</head>
+<body>
+	<nav th:fragment="menu">
+        <h1>관리자 메뉴</h1>
+        <div class="wrap">
+            <p>관리자 메뉴</p>
+            <ul>
+                <li><a href="/admin/file">파일 목록, 업로드</a></li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
