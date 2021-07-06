@@ -20,13 +20,16 @@
                 <section id="file-upload">
                     <h1>파일 업로드 폼</h1>
                     <form action="/admin/file/write" method="POST" enctype="multipart/form-data">
-                        <p>[[${msg}]]</p>
-                        <p>파일</p>
+                        <p class="title">파일 업로드 (이미지 올리기용)</p>
+                        <hr>
+                        <p class="msg">[[${msg}]]</p>
                         <p>
-                            <input type="file" name="files"/>
+                            <input type="text" name="division" placeholder="분류" required="required">
+                            <span>/</span>
+                            <input type="file" name="files" required="required"/>
                         </p>
                         <p>
-                            <input type="text" name="division" placeholder="분류">
+                            <span>static/images/분류/파일명 형태로 저장됩니다.</span>
                         </p>
                         <p>
                             <button type="submit">업로드</button>

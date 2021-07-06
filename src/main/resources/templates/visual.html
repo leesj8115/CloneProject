@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<!-- 비주얼 이미지 리스트 -->
+	<ul class="visual-image flex">
+		<th:block th:each="data, i : ${visual}">			
+			<li th:value="${i.index}">
+				<!-- 비주얼 이미지 -->
+				<img th:src="${data.filePath}">
+			</li>
+		</th:block>
+	</ul>
+	
+	<!-- 불릿 리스트 -->
+	<ul class="bullet flex center">
+		<th:block th:each="data : ${visual}">
+			<li><!-- 점 --></li>
+		</th:block>
+		
+	</ul>
+
+</html>

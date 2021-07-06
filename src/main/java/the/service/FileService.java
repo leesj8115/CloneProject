@@ -8,4 +8,6 @@ public interface FileService {
 
     void saveFile(FileDto dto, Model model);
 
+	void getVisual(Model model);
+
 }

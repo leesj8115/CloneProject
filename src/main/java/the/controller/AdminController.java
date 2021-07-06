@@ -33,13 +33,20 @@ public class AdminController {
     public String file() {
         return "/admin/file";
     }
-
+    
+    // 파일 업로드
+    // 참고 : http://yoonbumtae.com/?p=2834
+    
     @PostMapping("/admin/file/write")
     public String write(@RequestParam("files") MultipartFile files,String division, Model model) {        
 
         log.debug("파일 업로드 실행");
-
-        String rootPath = "D:/workspace/cloneProj/src/main/resources/static";
+        
+        // rootPath은 작업 환경 (집 로컬, 외부 로컬, GCP Server)에 맞게 변경 필요
+        String rootPath = "D:/workspace/cloneProj/src/main/resources/static/images";	// 집
+        // String rootPath = "E:/spring/workspace/cloneProj/src/main/resources/static/images";	// 외부
+        // String rootPath = "/home/leesj8115/src/root/WEB-INF/classes/static/images";		// 리눅스 서버 (GCP)
+        
         String basePath = rootPath + "/" + division;
 
         // divison에 해당하는 폴더 없을 경우 폴더 생성
@@ -55,17 +62,23 @@ public class AdminController {
 
         File dest = new File(filePath);
 
-        FileDto dto = new FileDto();
-        dto.setFileName(files.getName());
-        dto.setFileOriName(files.getOriginalFilename());
-        dto.setFilePath(filePath);
-        dto.setDivision(division);
-
         try {
             files.transferTo(dest);
         } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
         }
+        
+        /*
+         * 위에서 실제 파일은 전송한 후
+         * DB에는 root 아래 / 부터 저장되도록 수정함
+         * 지금은 무조건 images 폴더 아래로 가게 되어있으니 해당 에 맞게 filePath 수정
+         * */
+        
+        FileDto dto = new FileDto();
+        dto.setFileName(files.getName());
+        dto.setFileOriName(files.getOriginalFilename());
+        dto.setFilePath("/images" + "/" + division + "/" + files.getOriginalFilename());
+        dto.setDivision(division);
 
         fileService.saveFile(dto, model);
 

@@ -8,3 +8,35 @@ main>.wrap {
     padding: 20px 40px;
     margin: 0 auto;
 }
+
+#file-upload form {
+    width: 1000px;
+}
+
+#file-upload form p {
+    margin-bottom: 20px;
+}
+
+#file-upload form .msg {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #F77527;
+}
+
+#file-upload form .title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+#file-upload form p input {
+    padding: 5px 3px;
+}
+
+#file-upload form p button {
+    padding: 1em 2em;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}

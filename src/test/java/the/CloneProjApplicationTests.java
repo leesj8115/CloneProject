@@ -1,7 +1,5 @@
 package the;
 
-import static org.mockito.ArgumentMatchers.isNull;
-
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;

@@ -16,10 +16,23 @@ var speed = 3000;	// 전환 속도
 var bullet_list;
 
 $(function() {
-	initPage();
-	$("#tag-item>.wrap .menu li").on("click", changeTagItem); // 3번 작업
+	visualLoading();
 });
 
+
+function visualLoading() {
+	// ajax를 통해, DB에서 파일 경로 따와서 메인의 visual 영역 출력
+    $.get(
+        "/visual",
+        {},
+        function(result) {
+			$("#visual>.wrap").html(result);
+	
+            initPage();
+			$("#tag-item>.wrap .menu li").on("click", changeTagItem); // 3번 작업
+        }
+    );
+}
 
 function initPage() {
 	// 처음 페이지 로딩시 실행하는 함수

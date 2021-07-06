@@ -27,6 +27,10 @@ main>.wrap section:not(:first-child) {
 	width: 100%;
 }
 
+/*
+	비주얼 영역에 대해 다시 처리할 거임
+*/
+/*
 #visual>.wrap .visual-image li[value="0"] {
     background-image: url("/images/visual/visual-1.png");
 }
@@ -42,7 +46,7 @@ main>.wrap section:not(:first-child) {
 #visual>.wrap .visual-image li[value="3"] {
     background-image: url("/images/visual/visual-4.jpg");
 }
-
+*/
 #visual>.wrap .bullet {
     margin: 10px auto 20px;
 }

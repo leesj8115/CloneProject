@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall : 고객센터</title>
+	<link rel="stylesheet" href="/css/cs/index.css">
+	<script src="/js/cs/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>고객센터</h1>
+		<div class="wrap flex">
+            <form action="/test" method="POST">
+                <input type="text" id="data" name="data" th:value="${data}">
+
+            </form>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>
