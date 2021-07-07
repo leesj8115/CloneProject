@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!-- ajax를 통해 뿌려줄 데이터 -->
     <th:block th:each="dto : ${list}">
         <tr class="faq-subject">
@@ -10,20 +10,33 @@
                 <span class="question-text" th:text="${dto.question}">
                     <!-- 질문 내용 -->
                 </span>
+                <input class= "edit edit-question" type="text">
             </td>
             <td>
                 <div class="icon-pn"><!-- +, - 아이콘 이미지 --></div>
             </td>
         </tr>
         <tr class="faq-content">
-            <td><!-- 미사용 --></td>
             <td>
+            	<th:block sec:authorize="hasRole('ADMIN')">
+            		<!-- 관리자에게만 보이는 마법의 버튼 -->
+            		<ul>
+            			<li><button class="btn-edit">편집</button></li>
+            			<li><button class="btn-delete">삭제</button></li>
+            			<li><button class="edit btn-update">수정</button></li>
+            			<li><button class="edit btn-cancel">취소</button></li>
+            		</ul>
+            		<!-- faq의 no를 hidden으로 가지고 있어요 -->
+					<input type="hidden" th:value="${dto.no}">
+				</th:block>
+			</td>
+            <td colspan="2">
                 <span class="answer">A</span>
                 <span class="answer-text" th:text="${dto.answer}">
                     <!-- 답변 내용 -->
-                </span>
+                </span> 
+                <textarea type="text" class="edit edit-answer"></textarea>
             </td>
-            <td><!-- 미사용 --></td>
         </tr>
     </th:block>
     <tr>

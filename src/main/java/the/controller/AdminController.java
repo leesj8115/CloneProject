@@ -22,7 +22,7 @@ public class AdminController {
     @Autowired
     FileService fileService;
 
-    @GetMapping({"/admin", "/admin/index"})
+    @GetMapping("/admin")
 	public String admin() {
 		// 관리자 페이지로 이동
 
@@ -32,6 +32,11 @@ public class AdminController {
     @GetMapping("/admin/file")
     public String file() {
         return "/admin/file";
+    }
+    
+    @GetMapping("/admin/item")
+    public String item() {
+    	return "/admin/item";
     }
     
     // 파일 업로드

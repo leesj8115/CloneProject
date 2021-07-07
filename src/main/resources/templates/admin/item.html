@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSNmall : 고객센터</title>
+	<link rel="stylesheet" href="/css/admin/item.css">
+	<script src="/js/admin/item.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>관리자 페이지 - 상품</h1>
+		<div class="wrap flex">
+            <nav id="admin-menu" th:include="/admin/menu::menu">
+                <!-- menu.html 의 내용을 가져옴 -->
+            </nav>
+            <div id="main-page">
+                <h1>상품 등록 화면</h1>
+                <section id="item-upload">
+                    <h1>상품 등록 폼</h1>
+                    <form action="/admin/file/write" method="POST" enctype="multipart/form-data">
+                        <p class="title">상품 등록</p>
+                        <hr>
+                        <p class="msg">[[${msg}]]</p>
+                        <p>
+                        	<label for="large">대분류</label>
+                            <select id="large" name="largeCategory">
+                            	<option value=""></option>
+                            	<option value="shoes">신발</option>
+                            	<option value="clouthes">의류</option>
+                            	<option value="supplies">용품</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="small">소분류</label>
+                            <select id="small" name="smallCategory">
+                            	<option value=""></option>
+                            	<option value="walking">워킹화</option>
+                            	<option value="running">러닝화</option>
+                            </select>
+                        </p>
+                        <p>
+                        	<label for="brand">브랜드</label>
+                        	<input type="text" name="brand" placeholder="프로스펙스 등">
+                        </p>
+                        <p>
+                        	<label for="item-name">제품명</label>
+                        	<input type="text" id="item-name" name="name">
+                        </p>
+                        <p>
+                        	<label for="price">정가</label>
+                        	<input type="number" id="price" name="price" min="0">
+                        </p>
+                        <p>
+                        	<label for="sale-price">판매가</label>
+                        	<input type="number" id="sale-price" name="saleprice" min="0" placeholder="정가 판매시 미입력">
+                        </p>
+                        <p>
+                            <button type="submit">업로드</button>
+                        </p>
+                    </form>
+                </section>
+            </div>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

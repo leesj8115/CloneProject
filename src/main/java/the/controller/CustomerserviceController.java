@@ -3,11 +3,15 @@ package the.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
-import the.domain.dto.FaqDto;
+import the.domain.dto.faq.FaqDto;
+import the.domain.dto.faq.FaqResultDto;
 import the.service.FaqService;
 
 @Slf4j
@@ -26,6 +30,26 @@ public class CustomerserviceController {
     public String faq() {
         // faq로 이동
         return "/cs/faq/list";
+    }
+    
+    @ResponseBody
+    @PostMapping("/cs/faq/update")
+    public void updateFaq(FaqResultDto dto) {
+    	// FaqResultDto에 no까지 다 포함돼서
+    	// 요거 그냥 씁니당
+    	log.debug(dto.getNo() + "번 Faq 수정합니다");
+    	
+    	faqService.update(dto);
+    }
+    
+    @ResponseBody
+    @DeleteMapping("/cs/faq/{no}")
+    public void deleteFaq(@PathVariable long no) {
+    	// faq의 id 값을 받아서 삭제 예정
+    	log.debug("삭제할 no = " + no);
+    	
+    	faqService.delete(no);
+    	
     }
 
     @GetMapping("/cs/faq/write")

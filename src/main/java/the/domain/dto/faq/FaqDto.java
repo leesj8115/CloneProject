@@ -1,4 +1,4 @@
-package the.domain.dto;
+package the.domain.dto.faq;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,10 +13,4 @@ public class FaqDto {
     private String division;
     private String question;
     private String answer;
-
-    public FaqEntity toEntity() {
-        FaqEntity entity = FaqEntity.builder().division(division).question(question).answer(answer).build();
-
-        return entity;
-    }
 }

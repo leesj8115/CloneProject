@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import lombok.extern.slf4j.Slf4j;
-import the.domain.dto.FaqDto;
-import the.domain.dto.FaqResultDto;
+import the.domain.dto.faq.FaqDto;
+import the.domain.dto.faq.FaqResultDto;
 import the.domain.entity.FaqEntity;
 import the.domain.entity.FaqRepository;
 
@@ -80,5 +80,17 @@ public class FaqServiceImpl implements FaqService {
 
         faqRepository.save(entity);
     }
+
+	@Override
+	public void delete(long no) {
+		// FaqEntity의 id인 no를 통해 삭제!
+		faqRepository.deleteById(no);
+	}
+
+	@Override
+	public void update(FaqResultDto dto) {
+		// 똑같은 id를 가진 entity를 save를 해서 수정
+		faqRepository.save(dto.toEntity());
+	}
     
 }

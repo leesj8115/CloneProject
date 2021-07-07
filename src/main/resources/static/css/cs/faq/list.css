@@ -80,6 +80,10 @@ main>.wrap {
     border: none;
 }
 
+/*
+	faq-board 부분
+*/
+
 #faq-board #faq-tag {
     width: 100%;
     margin-bottom: 3em;
@@ -161,6 +165,11 @@ main>.wrap {
     font-size: 13px;
 }
 
+#faq-board table tbody tr td .edit-question {
+	width: 80%;
+	padding: 3px;
+}
+
 #faq-board table tbody tr td .icon-pn {
     display: block;
     width: 13px;
@@ -179,8 +188,26 @@ main>.wrap {
     background-color: #eee;
 }
 
+#faq-board table tbody .faq-content td ul li button {
+	padding: 3px 5px;
+	margin: 5px 0;
+	color: #fff;
+	font-weight: 700;
+	background-color: #000;
+	border: none;
+	cursor: pointer;
+}
+
 #faq-board table tbody tr td .answer-text {
     color: #333;
+}
+
+#faq-board table tbody tr td .edit-answer {
+	width: 100%;
+	height: 10em;
+	padding: 5px;
+	resize: none;
+	overflow: scroll;
 }
 
 #faq-board table tbody tr td #page-list {
