@@ -181,9 +181,10 @@ header>.wrap hr {
 
 #navi-menu-all>.wrap table tr td ul li {
 	padding-bottom: 15px;
+	cursor: pointer;
 }
 
-#navi-menu-all>.wrap table tr td ul li a:hover {
+#navi-menu-all>.wrap table tr td ul li span:hover {
 	color: #F77527;
 }
 

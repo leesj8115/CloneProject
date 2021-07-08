@@ -31,18 +31,21 @@ function domainSelect() {
 	
     var opt = $(this).val();
 
-    if (opt === "none") {
+    if (opt === "") {
         $("#email-domain").attr("disabled", true);
+		$("#email-domain").attr("readonly", true);
         $("#email-domain").val("");
         disableButton();
     }
     else if (opt === "etc") {
         $("#email-domain").attr("disabled", false);
+        $("#email-domain").attr("readonly", false);
         $("#email-domain").val("");
         ableButton();
 
     } else {
         $("#email-domain").attr("disabled", false);
+		$("#email-domain").attr("readonly", true);
         $("#email-domain").val(opt);
         ableButton();
     }

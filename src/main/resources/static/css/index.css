@@ -25,28 +25,13 @@ main>.wrap section:not(:first-child) {
 	background-repeat: no-repeat;
 	height: 100%;
 	width: 100%;
+	cursor: pointer;
 }
 
 /*
-	비주얼 영역에 대해 다시 처리할 거임
+	visual 영역 이미지는 ajax를 통해, img src= 로 처리
 */
-/*
-#visual>.wrap .visual-image li[value="0"] {
-    background-image: url("/images/visual/visual-1.png");
-}
 
-#visual>.wrap .visual-image li[value="1"] {
-    background-image: url("/images/visual/visual-2.png");
-}
-
-#visual>.wrap .visual-image li[value="2"] {
-    background-image: url("/images/visual/visual-3.png");
-}
-
-#visual>.wrap .visual-image li[value="3"] {
-    background-image: url("/images/visual/visual-4.jpg");
-}
-*/
 #visual>.wrap .bullet {
     margin: 10px auto 20px;
 }
@@ -129,6 +114,7 @@ main>.wrap section:not(:first-child) {
 /* project의 호버 시 처리 */
 #project>.wrap ul li:hover div {
     background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 #project>.wrap ul li:hover div span {
@@ -227,6 +213,7 @@ main>.wrap section:not(:first-child) {
 /* big-project의 호버 시 처리 */
 #big-project>.wrap:hover div {
     background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 #big-project>.wrap:hover div span {

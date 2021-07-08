@@ -118,14 +118,13 @@ function faqUpdate() {
 	// 위에서 얻은 내용을 통해서 처리하기!
 	
 	$.ajax({
-		url: "/cs/faq/update",
+		url: "/cs/faq/" + _no,
 		data: {
-			no : _no,
 			division: _division,
 			question: _question,
 			answer: _answer
 		},
-		type: "POST",
+		type: "PUT",
 		success: function(result) {
 			alert("수정을 완료했습니다.");
 			faqLoading(divisionList[divisionIdx], 1);	

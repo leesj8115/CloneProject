@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<th:block th:include="/common/commons::head"></th:block>
-	<title>클론 코딩 - LSNmall : 고객센터</title>
+	<title>클론 코딩 - LSNmall : 제품 업로드</title>
 	<link rel="stylesheet" href="/css/admin/item.css">
 	<script src="/js/admin/item.js"></script>
 </head>
@@ -18,30 +18,30 @@
                 <h1>상품 등록 화면</h1>
                 <section id="item-upload">
                     <h1>상품 등록 폼</h1>
-                    <form action="/admin/file/write" method="POST" enctype="multipart/form-data">
+                    <form action="/admin/item/write" method="POST" enctype="multipart/form-data">
                         <p class="title">상품 등록</p>
                         <hr>
                         <p class="msg">[[${msg}]]</p>
                         <p>
                         	<label for="large">대분류</label>
-                            <select id="large" name="largeCategory">
+                            <select id="large" name="largeCategory" required="required">
                             	<option value=""></option>
-                            	<option value="shoes">신발</option>
-                            	<option value="clouthes">의류</option>
-                            	<option value="supplies">용품</option>
+                            	<option value="SHOES">신발</option>
+                            	<option value="CLOUTHES">의류</option>
+                            	<option value="SUPPLIES">용품</option>
                             </select>
                         </p>
                         <p>
                             <label for="small">소분류</label>
-                            <select id="small" name="smallCategory">
+                            <select id="small" name="smallCategory" required="required">
                             	<option value=""></option>
-                            	<option value="walking">워킹화</option>
-                            	<option value="running">러닝화</option>
+                            	<option value="WALKING">워킹화</option>
+                            	<option value="RUNNING">러닝화</option>
                             </select>
                         </p>
                         <p>
                         	<label for="brand">브랜드</label>
-                        	<input type="text" name="brand" placeholder="프로스펙스 등">
+                        	<input type="text" name="brand" placeholder="프로스펙스 등" required="required">
                         </p>
                         <p>
                         	<label for="item-name">제품명</label>
@@ -53,11 +53,17 @@
                         </p>
                         <p>
                         	<label for="sale-price">판매가</label>
-                        	<input type="number" id="sale-price" name="saleprice" min="0" placeholder="정가 판매시 미입력">
+                        	<input type="number" id="sale-price" name="salePrice" min="0" placeholder="정가 판매시 미입력">
+                        </p>
+                        <p>
+                        	<label for="photo">제품사진 입력</label>
+                        	<input type="file" id="photo" name="files[]" multiple="multiple" required="required">
                         </p>
                         <p>
                             <button type="submit">업로드</button>
                         </p>
+                        
+                      	<input type="hidden" name="division" value="item">
                     </form>
                 </section>
             </div>

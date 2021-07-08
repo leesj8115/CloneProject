@@ -14,8 +14,8 @@ public interface FaqService {
     void write(FaqDto dto);
 
 	void delete(long no);
-
-	void update(FaqResultDto dto);
+	
+	void update(long no, FaqDto dto);
 
     
 }

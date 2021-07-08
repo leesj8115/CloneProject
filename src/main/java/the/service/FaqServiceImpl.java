@@ -88,9 +88,16 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public void update(FaqResultDto dto) {
-		// 똑같은 id를 가진 entity를 save를 해서 수정
-		faqRepository.save(dto.toEntity());
+	public void update(long no, FaqDto dto) {
+		// TODO Auto-generated method stub
+		FaqEntity entity = FaqEntity.builder()
+				.no(no)
+				.division(dto.getDivision())
+				.question(dto.getQuestion())
+				.answer(dto.getAnswer())
+				.build();
+		
+		faqRepository.save(entity);
 	}
     
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,13 +34,12 @@ public class CustomerserviceController {
     }
     
     @ResponseBody
-    @PostMapping("/cs/faq/update")
-    public void updateFaq(FaqResultDto dto) {
-    	// FaqResultDto에 no까지 다 포함돼서
-    	// 요거 그냥 씁니당
-    	log.debug(dto.getNo() + "번 Faq 수정합니다");
+    @PutMapping("/cs/faq/{no}")
+    public void edit(@PathVariable long no, FaqDto dto) {
     	
-    	faqService.update(dto);
+    	log.debug(no + "번 faq 수정");
+    	
+    	faqService.update(no, dto);
     }
     
     @ResponseBody

@@ -57,10 +57,12 @@ public class Item {
     
     @OneToMany
     @JoinColumn(name = "item_id")
-    private List<FileEntity> photoList;  // 사진
+    @Builder.Default
+    private List<FileEntity> photoList = new ArrayList<>();  // 사진
     
     @OneToMany
     @JoinColumn(name = "item_id")
-    private List<Stock> stockList;  // 재고
+    @Builder.Default
+    private List<Stock> stockList = new ArrayList<>();  // 재고
 
 }
