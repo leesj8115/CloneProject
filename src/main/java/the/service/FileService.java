@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-import the.domain.dto.FileDto;
 import the.domain.entity.file.FileEntity;
 
 public interface FileService {

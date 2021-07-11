@@ -36,8 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 페이지별 권한 설정
 		http.authorizeRequests()
 			.antMatchers(
-				"/", "/log/**", "/display/**", "/visual", "/test", "/list/**",
-				"/cs/index", "/cs/notice", "/cs/faq/list", "/cs/faq", "/cs/faq/get").permitAll()
+				"/", "/log/**", "/display/**", "/visual", "/test",
+				"/cs/index", "/cs/notice", "/cs/faq/list", "/cs/faq", "/cs/faq/get",
+				"/item").permitAll()
 			.antMatchers("/cs/faq/write", "/cs/faq/remove", "/admin/**").hasRole("ADMIN")
 			.anyRequest().authenticated();
 	

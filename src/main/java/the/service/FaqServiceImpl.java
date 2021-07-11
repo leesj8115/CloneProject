@@ -89,7 +89,6 @@ public class FaqServiceImpl implements FaqService {
 
 	@Override
 	public void update(long no, FaqDto dto) {
-		// TODO Auto-generated method stub
 		FaqEntity entity = FaqEntity.builder()
 				.no(no)
 				.division(dto.getDivision())

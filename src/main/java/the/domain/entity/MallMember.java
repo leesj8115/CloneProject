@@ -46,13 +46,10 @@ public class MallMember extends BaseDate {
 
 	@Column
 	private boolean isSocial;	// 소셜 로그인 확인
-	/*
+
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Gender gender;	// 성별
-
-	
-	*/
 	
 	@Enumerated(EnumType.STRING)
 	@ElementCollection(fetch = FetchType.EAGER)

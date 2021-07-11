@@ -3,7 +3,6 @@ package the.service;
 import org.springframework.ui.Model;
 
 import the.domain.dto.faq.FaqDto;
-import the.domain.dto.faq.FaqResultDto;
 
 public interface FaqService {
 

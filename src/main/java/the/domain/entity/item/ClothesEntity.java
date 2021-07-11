@@ -25,12 +25,12 @@ import the.domain.entity.Gender;
 @RequiredArgsConstructor
 @Builder
 @Getter
-@Table(name = "shoes")
+@Table(name = "clothes")
 @Entity
-public class ShoesEntity {
+public class ClothesEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long shoesNo;                        // 제품 번호
+    private long clothesNo;                   // 제품 번호
 	
     @Column
     @Enumerated(EnumType.STRING)
@@ -38,7 +38,7 @@ public class ShoesEntity {
 
     @Column (nullable = false)
     @Enumerated(EnumType.STRING)
-    private ShoesCategory shoesCategory;    // 소분류 (신발 내 구분. 등산화, 슬리퍼 등등)
+    private ClothesCategory clothesCategory;    // 소분류 (의류 내 구분. 긴팔,반팔 등)
 
     
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

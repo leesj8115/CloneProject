@@ -53,7 +53,8 @@ function pageGoPost(data) {
 		html: inputTagData
 	}).appendTo("body");
 	
-	tempForm.submit();	// deprecated 표현이라.. 바꿔줘야함 ㅠ
+	//tempForm.submit();	// deprecated 표현
+	tempForm.trigger("submit");
 }
 
 function showItem() {

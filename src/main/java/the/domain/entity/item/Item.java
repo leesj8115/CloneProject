@@ -5,25 +5,19 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import the.domain.entity.BaseDate;
 import the.domain.entity.file.FileEntity;
 
 
@@ -32,7 +26,7 @@ import the.domain.entity.file.FileEntity;
 @Builder
 @Getter
 @Entity
-public class Item {
+public class Item extends BaseDate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long itemId;
@@ -55,12 +49,12 @@ public class Item {
     @Column
     private long salePrice; // 할인 가격
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     @Builder.Default
     private List<FileEntity> photoList = new ArrayList<>();  // 사진
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     @Builder.Default
     private List<Stock> stockList = new ArrayList<>();  // 재고

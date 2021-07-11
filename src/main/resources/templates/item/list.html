@@ -4,6 +4,7 @@
 	<th:block th:include="/common/commons::head"></th:block>
 	<title>클론 코딩 - 리스트</title>
 	<link rel="stylesheet" href="/css/item/list.css">
+	<script src="/js/item/list.js"></script>
 </head>
 <body>
 	<header th:insert="/common/commons::header"></header>
@@ -12,77 +13,85 @@
 		<h1>상품 목록</h1>
 			<section id="title">
 				<h1>상품 목록 분류</h1>
-				<p>신발 혹은 의류 혹은 용품 (일단 신발)</p>
+				<p>[[${largeCategory}]]</p>
 				<div>
 					<!-- 신발, 의류, 용품에 따라 다른 메뉴 항목 출력 -->
-					<ul>
-						<li>ALL</li>
-						<li>워킹화</li>
-						<li>러닝화</li>
-						<li>등산/트래킹화</li>
-						<li>스니커즈</li>
-						<li>샌들/슬리퍼</li>
-						<li>스포츠화</li>
-						<li>기타</li>
+					<ul class="flex">
+						<th:block th:each="list, i : ${smallList}">
+							<li th:text=${list} th:value=${i.index}></li>
+						</th:block>
 					</ul>
+
+					<script th:inline="javascript">
+						// 앞에서 선택한 메뉴의 값에 해당하는 index의
+						// 아이템에 'clicked' 클래스를 추가
+						var clicked = Number("[[${smallSelect}]]");
+						$("#title div ul li").eq(clicked).addClass("clicked");
+					</script>
 				</div>
 			</section>
+			<hr>
 			<section id="item-list">
 				<h1>상품 나열 영역</h1>
 				<div class="wrap">
+					<!-- 상품 정렬 메뉴 -->
+					<ul class="flex">
+						<li class="clicked">최근등록순</li>
+						<li>판매순</li>
+						<li>인기순(클릭순)</li>
+						<li>높은가격순</li>
+						<li>낮은가격순</li>
+					</ul>
 					<!-- 한 줄에 상품은 4개씩 -->
 					<table>
 						<tr>
 							<td>
-								<img src="/images/test/photo-1.jpg">
-								<p>
+								<img class="img-normal" src="/images/test/photo-1.jpg" alt="기본사진">
+								<img class="img-hover" src="/images/test/photo-1-hover.jpg" alt="호버사진">
+								<p class="gender">
 									<!-- 남, 여 표시 구간-->
 									남/여
 								</p>
 								<p class="item-brand">PRO-SPECS</p>
-								<p>
+								<p class="flex">
 									<span class="item-tag">[오리지널 라인]</span>
-									<span class="item-name">빅스타 106</span>
+									<span class="item-name">빅스타 106제목이 겁나 길어졌다고 가정합시다다다다다다다다다다다다다다다다다다</span>
 								</p>
 								<p>
-									<span class="item-original-price">&#92;79,000</span>
-									<sapn class="item-sale-price"></sapn>
-								</p>
-								<p>
-									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
-									<span>쿠폰</span>
-								</p>
-							</td>
-							<td>
-								<img src="/images/test/photo-1.jpg" alt="제품 사진">
-								<p>
-									<!-- 남, 여 표시 구간-->
-									남/여
-								</p>
-								<p class="item-brand">PRO-SPECS</p>
-								<p>
-									<span class="item-tag">[오리지널 라인]</span>
-									<span class="item-name">빅스타 106</span>
-								</p>
-								<p>
-									<span class="item-original-price">&#92;79,000</span>
-									<sapn class="item-sale-price"></sapn>
-								</p>
-								<p>
-									<!-- 만약 제품에 사용할 쿠폰이 있다면 쿠폰 버튼 출력-->
-									<span>쿠폰</span>
+									<!--정가-->
+									<sapn class="item-price"></sapn>
+									<!--판매가-->
+									<span class="item-sell-price">&#92;79,000</span>
 								</p>
 							</td>
 							<td>
 								<img src="/images/test/photo-1.jpg">
-								<p>
+								<p class="gender">
 									<!-- 남, 여 표시 구간-->
 									남/여
 								</p>
 								<p class="item-brand">PRO-SPECS</p>
-								<p>
+								<p class="flex">
 									<span class="item-tag">[오리지널 라인]</span>
-									<span class="item-name">빅스타 106</span>
+									<span class="item-name">빅스타 106제목이 겁나 길어졌다고 가정합시다다다다다다다다다다다다다다다다다다</span>
+								</p>
+								<p>
+									<!--정가-->
+									<sapn class="item-price">&#92; 99,000</sapn>
+									<!--판매가-->
+									<span class="item-sell-price">&#92; 79,000</span>
+								</p>
+							</td>
+							<td>
+								<img src="/images/test/photo-1.jpg">
+								<p class="gender">
+									<!-- 남, 여 표시 구간-->
+									남/여
+								</p>
+								<p class="item-brand">PRO-SPECS</p>
+								<p class="flex test">
+									<span class="item-tag">[오리지널 라인]</span>
+									<span class="item-name">빅스타 106제목이 겁나 길어졌다고 가정합시다다다다다다다다다다다다다다다다다다</span>
 								</p>
 								<p>
 									<span class="item-original-price">&#92;79,000</span>
@@ -95,14 +104,14 @@
 							</td>
 							<td>
 								<img src="/images/test/photo-1.jpg">
-								<p>
+								<p class="gender">
 									<!-- 남, 여 표시 구간-->
 									남/여
 								</p>
 								<p class="item-brand">PRO-SPECS</p>
-								<p>
+								<p class="flex test">
 									<span class="item-tag">[오리지널 라인]</span>
-									<span class="item-name">빅스타 106</span>
+									<span class="item-name">빅스타 106제목이 겁나 길어졌다고 가정합시다다다다다다다다다다다다다다다다다다</span>
 								</p>
 								<p>
 									<span class="item-original-price">&#92;79,000</span>

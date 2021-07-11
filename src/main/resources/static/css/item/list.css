@@ -16,19 +16,109 @@ main>.wrap {
     margin: 50px 0 20px;
 }
 
+#title div ul {
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#title div ul li {
+    margin: 0 1em;
+    padding: 0.5em 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #999;
+    cursor: pointer;
+}
+
+#title div ul li.clicked,
+#title div ul li:hover {
+    color: #E76C1F;
+    border-bottom: 2px solid #E76C1F;
+}
+
+/*
+********** 아이템 목록 영역 **********
+*/
+
 #item-list>.wrap {
-    width: 1280px;
-    padding: 0 40px;
+    padding: 20px 0 50px;
+}
+
+#item-list>.wrap ul {
+    justify-content: flex-end;
+    margin: 40px 0 50px;
+}
+
+#item-list>.wrap ul li {
+    margin-left: 2em;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#item-list>.wrap ul li.clicked {
+    color: #F77527;
+}
+
+#item-list>.wrap table {
     margin: 0 auto;
+}
+
+#item-list>.wrap table tr {
+    justify-content: space-between;
 }
 
 #item-list>.wrap table tr td {
     text-align: center;
-    margin: 0 auto;
     border: 1px solid black;
+    padding: 20px;
+    width: 275px;
 }
 
 #item-list>.wrap table tr td img {
     width: 245px;
     height: 245px;
 }
+
+#item-list>.wrap table tr td p {
+    text-align: left;
+    width: 270px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 5px 0;
+}
+
+#item-list>.wrap table tr td .gender {
+    text-align: right;
+}
+
+#item-list>.wrap table tr td .item-brand {
+    font-size: 13px;
+}
+
+#item-list>.wrap table tr td p .item-tag {
+    font-size: 13px;
+    color: #222;
+    margin-right: 3px;
+}
+
+#item-list>.wrap table tr td p .item-name {
+    font-size: 13px;
+    color: #666;
+}
+
+#item-list>.wrap table tr td p .item-price {
+    color: #B1B1B1;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+
+#item-list>.wrap table tr td p .item-sell-price {
+    color: #222;
+    font-size: 15px;
+    font-weight: 700;
+}
+

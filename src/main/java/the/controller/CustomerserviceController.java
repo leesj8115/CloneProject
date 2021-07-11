@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.faq.FaqDto;
-import the.domain.dto.faq.FaqResultDto;
 import the.service.FaqService;
 
 @Slf4j
