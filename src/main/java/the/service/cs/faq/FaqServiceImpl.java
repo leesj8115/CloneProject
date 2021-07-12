@@ -1,4 +1,4 @@
-package the.service;
+package the.service.cs.faq;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,8 +15,8 @@ import org.springframework.ui.Model;
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.faq.FaqDto;
 import the.domain.dto.faq.FaqResultDto;
-import the.domain.entity.FaqEntity;
-import the.domain.entity.FaqRepository;
+import the.domain.entity.cs.faq.FaqEntity;
+import the.domain.entity.cs.faq.FaqRepository;
 
 
 @Slf4j

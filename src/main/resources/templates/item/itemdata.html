@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<tr>
+	<td th:each="data : ${result}">
+		<!--
+		<img class="img-normal" th:src="${data.getItem().getPhotoList().get(0).getFilePath()}" alt="기본사진">
+		<img class="img-hover" src="/images/test/photo-1-hover.jpg" alt="호버사진">
+		<p class="gender">
+			남/여
+		</p>
+		-->
+		<p>[[${data.getItem().getPhotoList()]]</p>
+		<p class="item-brand">[[${data.getItem().getPhotoList()}]]</p>
+		<p class="flex">
+			<!-- <span class="item-tag">[오리지널 라인]</span> -->
+			<span class="item-name">[[${data.getItem().getName()}]]</span>
+		</p>
+		<p>
+			<!--정가-->
+			<th:block th:if="${data.getItem().getPrice()} != ${data.getItem().getSalePrice()}">
+				<sapn class="item-price">&#92; [[${data.getItem().getPrice()}]]</sapn>
+			</th:block>
+			<!--판매가-->
+			<span class="item-sell-price">&#92; [[${data.getItem().getSalePrice()}]]</span>
+		</p>
+	</td>
+<tr>
+
+</html>

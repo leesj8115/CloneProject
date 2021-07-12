@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,10 +23,10 @@ public class FileEntity {
     private long fno;
 
     @Column (nullable = false)
-    private String fileName;        // db에 들어가는 파일 이름
+    private String fileName;        // 파일 이름(OriginalName)
 
     @Column (nullable = false)
-    private String fileOriName;     // 실제 파일 이름
+    private long fileSize;          // 파일 크기
 
     @Column (nullable = false)
     private String filePath;         // 파일 경로

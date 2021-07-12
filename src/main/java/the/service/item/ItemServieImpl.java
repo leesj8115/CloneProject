@@ -35,9 +35,12 @@ public class ItemServieImpl implements ItemService {
 				.brand(dto.getBrand())
 				.name(dto.getName())
 				.price(dto.getPrice())
-				.salePrice(dto.getSalePrice())
-				.photoList(photo)
+				.sellPrice(dto.getSalePrice())
 				.build(); 
+		
+		for(FileEntity file : photo) {
+			entity.getPhotoList().add(file);
+		}
 		
 		Item result = itemRepository.save(entity);
 		

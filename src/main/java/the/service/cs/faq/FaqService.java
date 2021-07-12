@@ -1,4 +1,4 @@
-package the.service;
+package the.service.cs.faq;
 
 import org.springframework.ui.Model;
 

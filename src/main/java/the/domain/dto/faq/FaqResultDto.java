@@ -3,7 +3,7 @@ package the.domain.dto.faq;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import the.domain.entity.FaqEntity;
+import the.domain.entity.cs.faq.FaqEntity;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,13 +24,13 @@ public class FaqResultDto {
     }
     
     public FaqEntity toEntity() {
-    	FaqEntity entity = FaqEntity.builder()
-    			.no(no)
-    			.division(division)
-    			.question(question)
-    			.answer(answer)
-    			.build();
-    	
-    	return entity;
+        FaqEntity entity = FaqEntity.builder()
+                .no(no)
+                .division(division)
+                .question(question)
+                .answer(answer)
+                .build();
+        
+        return entity;
     }
 }

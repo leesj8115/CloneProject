@@ -1,4 +1,4 @@
-package the.service;
+package the.service.log;
 
 import org.springframework.ui.Model;
 

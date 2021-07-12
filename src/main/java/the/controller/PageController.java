@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.MemberDetails;
-import the.service.FileService;
+import the.service.file.FileService;
 
 @Slf4j
 @Controller
@@ -27,7 +27,7 @@ public class PageController {
 	public String visual(Model model) {
 		// 메인 화면의 비주얼 영역을, DB를 통해 파일 경로를 확인하고 보여줌
 		
-		log.debug("visual 가져오기 시작!");
+		
 		service.getVisual(model);
 		
 		return "/visual";
@@ -36,15 +36,17 @@ public class PageController {
 	@GetMapping("/test")
 	public String test(Model model, Authentication authentication) {
 		// 로그인 한 사용자 이름 꺼내기 테스트
+
+		log.debug("테스트!");
+
 		MemberDetails member = (MemberDetails) authentication.getPrincipal();
 		
-		System.out.println(member.getName());
+		log.debug(member.getName());
 		
 		model.addAttribute("data", member.getName());
 
-
-
 		return "/test";
 	}
+
 
 }

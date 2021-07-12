@@ -10,16 +10,16 @@ import the.domain.entity.file.FileEntity;
 @Data
 public class FileDto {
     private String fileName;
-    private String fileOriName;
     private String filePath;
     private String division;
+    private long fileSize;
 
     public FileEntity toEntity() {
         FileEntity entity = FileEntity.builder()
                             .fileName(fileName)
-                            .fileOriName(fileOriName)
                             .filePath(filePath)
                             .division(division)
+                            .fileSize(fileSize)
                             .build();
 
         return entity;

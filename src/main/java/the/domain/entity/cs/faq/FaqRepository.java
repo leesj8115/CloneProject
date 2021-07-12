@@ -1,4 +1,4 @@
-package the.domain.entity;
+package the.domain.entity.cs.faq;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package the.service;
+package the.service.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +23,8 @@ public class FileServiceImpl implements FileService {
     FileRepository repository;
     
     // rootPath은 작업 환경 (집 로컬, 외부 로컬, GCP Server)에 맞게 변경 필요
-    // private String rootPath = "D:/workspace/cloneProj/src/main/resources/static/images";	// 집
-    private String rootPath = "E:/spring/workspace/cloneProj/src/main/resources/static/images";	// 외부
+    private String rootPath = "D:/workspace/cloneProj/src/main/resources/static/images";	// 집
+    // private String rootPath = "E:/spring/workspace/cloneProj/src/main/resources/static/images";	// 외부
     // private String rootPath = "/home/leesj8115/src/root/WEB-INF/classes/static/images";		// 리눅스 서버 (GCP)
 
 	@Override
@@ -33,7 +33,7 @@ public class FileServiceImpl implements FileService {
 		// visual 폴더 안에 있는 이미지(파일 엔티티)를 가져옴
 		List<FileEntity> result = repository.findAllByDivision("visual");
 		
-		log.debug("result 갯수 = " + result.size());
+		//log.debug("result 갯수 = " + result.size());
 		
 		// model을 통해 데이터 전달, visual.html에서 뿌려줄 예정
 		model.addAttribute("visual", result);
@@ -72,11 +72,11 @@ public class FileServiceImpl implements FileService {
          * */
         
         FileDto dto = new FileDto();
-        dto.setFileName(files.getName());
-        dto.setFileOriName(files.getOriginalFilename());
+        dto.setFileName(files.getOriginalFilename());
         dto.setFilePath("/images" + "/" + division + "/" + files.getOriginalFilename());
+        dto.setFileSize(files.getSize());
         dto.setDivision(division);
-    	
+
         FileEntity result = repository.save(dto.toEntity());
 
         String msg = (result != null) ? "파일 저장을 완료했습니다." : "파일 저장을 실패했습니다.";
@@ -119,16 +119,16 @@ public class FileServiceImpl implements FileService {
              * */
             
             FileDto dto = new FileDto();
-            dto.setFileName(file.getName());
-            dto.setFileOriName(file.getOriginalFilename());
+            dto.setFileName(file.getOriginalFilename());
+            dto.setFileSize(file.getSize());
             dto.setFilePath("/images" + "/" + division + "/" + file.getOriginalFilename());
             dto.setDivision(division);
-        	
+            
             FileEntity resultEntity = repository.save(dto.toEntity());
             
             if (resultEntity != null) {
-            	log.debug(dto.getFileOriName() + " 파일 업로드 완료");
-            	entityList.add(resultEntity);
+                log.debug(dto.getFileName() + " 파일 업로드 완료");
+                entityList.add(resultEntity);
             }
         }
         

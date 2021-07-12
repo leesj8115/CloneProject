@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.faq.FaqDto;
-import the.service.FaqService;
+import the.service.cs.faq.FaqService;
 
 @Slf4j
 @Controller
@@ -35,20 +35,19 @@ public class CustomerserviceController {
     @ResponseBody
     @PutMapping("/cs/faq/{no}")
     public void edit(@PathVariable long no, FaqDto dto) {
-    	
-    	log.debug(no + "번 faq 수정");
-    	
-    	faqService.update(no, dto);
+        log.debug(no + "번 faq 수정");
+        
+        faqService.update(no, dto);
     }
     
     @ResponseBody
     @DeleteMapping("/cs/faq/{no}")
     public void deleteFaq(@PathVariable long no) {
     	// faq의 id 값을 받아서 삭제 예정
-    	log.debug("삭제할 no = " + no);
-    	
-    	faqService.delete(no);
-    	
+        log.debug("삭제할 no = " + no);
+        
+        faqService.delete(no);
+        
     }
 
     @GetMapping("/cs/faq/write")

@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import the.domain.entity.FaqEntity;
-import the.domain.entity.FaqRepository;
 import the.domain.entity.MallMember;
 import the.domain.entity.MemberRepository;
 import the.domain.entity.MemberRole;
+import the.domain.entity.cs.faq.FaqEntity;
+import the.domain.entity.cs.faq.FaqRepository;
 
 @SpringBootTest
 class CloneProjApplicationTests {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>테스트 리스트</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>테스트 리스트</h1>
+		<div class="wrap">
+            <ul class="flex">
+            	<li>번호</li>
+            	<li>이미지</li>
+            	<li>제목</li>
+            	<li>상영시작일</li>
+            	<li>상영종료일</li>
+            </ul>
+            <ul class="flex" th:each="dto : ${list}">
+            	<li>[[${dto.getNo()}]]</li>
+            	<li>
+					<img th:src="${dto.getFileUrl() + dto.getFileName()}" />
+				</li>
+            	<li>
+            		<span th:text="${dto.getTitle()}"></span>
+            	</li>
+            	<li>
+            		<span>[[${dto.getStartDate()}]]</span>
+				</li>
+            	<li>
+            		<span>[[${dto.getEndDate()}]]</span>
+            	</li>
+            </ul>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

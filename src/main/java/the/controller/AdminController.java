@@ -20,7 +20,7 @@ import the.domain.entity.item.Item;
 import the.domain.entity.item.LargeCategory;
 import the.domain.entity.item.ShoesCategory;
 import the.domain.entity.item.SuppliesCategory;
-import the.service.FileService;
+import the.service.file.FileService;
 import the.service.item.ClothesService;
 import the.service.item.ItemService;
 import the.service.item.ShoesService;
@@ -45,12 +45,16 @@ public class AdminController {
     @Autowired
     private SuppliesService suppliesService;
     
+    
+    // 상품 작성 완료시 사용하는 flag
+	private boolean writeFlag = false;
+    
     @GetMapping("/admin")
 	public String admin() {
 		// 관리자 페이지로 이동
 
 		return "/admin/index";
-	}
+	}  
 
     @GetMapping("/admin/file")
     public String file() {
@@ -76,6 +80,12 @@ public class AdminController {
         model.addAttribute("clothesCategory", clothesCategories);
         model.addAttribute("suppliesCategory", suppliesCategories);
 
+        
+        if (writeFlag == true) {
+        	writeFlag = false;
+        	model.addAttribute("msg", "상품 등록을 완료했습니다.");
+        }
+        
     	return "/admin/item";
     }
     
@@ -131,8 +141,7 @@ public class AdminController {
 
         log.debug("등록 완료!!");
         
-        model.addAttribute("msg", "상품 등록을 완료했습니다.");
-        
+        writeFlag = true;
 
         return "redirect:/admin/item";
     }

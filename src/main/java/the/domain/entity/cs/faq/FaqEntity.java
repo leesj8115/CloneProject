@@ -1,4 +1,4 @@
-package the.domain.entity;
+package the.domain.entity.cs.faq;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
