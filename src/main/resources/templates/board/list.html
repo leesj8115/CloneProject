@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSJmall : 게시판</title>
+	<link rel="stylesheet" href="/css/board/list.css">
+	<script src="/js/board/list.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>게시판 페이지</h1>
+		<div class="wrap">
+			<p class="title">게시판 페이지</p>
+			<hr>
+			<div class="list">
+				<div class="flex end">
+					<a href="/board/write"><button>글쓰기</button></a>
+				</div>
+				<ul class="flex title">
+					<li>글번호</li>
+					<li>제목</li>
+					<li>조회수</li>
+					<li>작성자</li>
+					<li>작성일</li>
+				</ul>
+				<!-- 게시판 리스트 정보  -->
+				<ul th:each="dto : ${list}" class="flex">
+					<li th:text="${dto.no}">글번호</li>
+					<li>
+						<!-- 2. detail 조회하기 위한 태그 구현 -->
+						<a th:href="|/board/${dto.no}|">
+							[[${dto.subject}]]
+						</a>
+					</li>
+					<li th:text="${dto.readCount}">조회수</li>
+					<li th:text="${dto.writer}">작성자</li>
+					<li th:text="${dto.createdDate.toLocalDate}">작성일</li>
+				</ul>
+				<!-- 게시판 리스트가 없을때  -->
+				<div th:if="${#lists.isEmpty(list)}">
+					<p class="msg">게시글이 존재하지 않습니다.</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

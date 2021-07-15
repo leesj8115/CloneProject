@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import url("/css/common.css");
+
+main>.wrap {
+	width: 1280px;
+	padding:0 40px;
+	margin:0 auto;
+}
+
+.wrap>.title {
+	
+	margin: 40px 0;
+	
+	font-size: 44px;
+	font-weight: 700;
+	
+}

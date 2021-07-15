@@ -37,6 +37,11 @@ public class TestServiceImpl implements TestService {
 		String fileName = file.getOriginalFilename();
 		String fileUrl = "/images/test/";
 		// url이 아닌 path 경로를 찾아요 .
+		
+		//String hardFileUrl = "E:/spring/workspace/cloneProj/src/main/resources/static";
+		
+		//String fileUrl = "/images/test/temp/";
+		
 		ClassPathResource cpr = new ClassPathResource("static" + fileUrl);
 		
 		ClassPathResource tempCpr = new ClassPathResource("static" + fileUrl + "temp/");
@@ -70,7 +75,7 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	public String uploadTempFile(MultipartFile file) {
-		// 1. 파이 정보
+		// 1. 파일 정보
 		long fileSize = file.getSize();
 		
 		if (fileSize > 2 * 1024 * 1024) {
@@ -79,11 +84,15 @@ public class TestServiceImpl implements TestService {
 		}
 		
 		String fileName = file.getOriginalFilename();
+		
+		String hardFileUrl = "E:/spring/workspace/cloneProj/src/main/resources/static";
+		
 		String fileUrl = "/images/test/temp/";
-		ClassPathResource cpr = new ClassPathResource("static" + fileUrl);
+		//ClassPathResource cpr = new ClassPathResource("static" + fileUrl);
 		
 		try {
-			File location = cpr.getFile();
+			File location = new File(hardFileUrl + fileUrl);
+			// File location = cpr.getFile();
 			// 해당 폴더에 파일이 존재.. (안 쓴 애들..)
 			
 			for(File element : location.listFiles()) {

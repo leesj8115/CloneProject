@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@import url("/css/common.css");
+
+main>.wrap {
+	width: 1280px;
+	padding:0 40px;
+	margin:0 auto;
+}
+
+.wrap>.title {
+	
+	margin: 40px 0;
+	
+	font-size: 44px;
+	font-weight: 700;
+	
+}
+
+.wrap #board-data .wrap {
+	margin-bottom: 30px;
+}
+
+.wrap #board-data .wrap p {
+	margin: 10px 0;
+}
+.wrap #board-data .wrap p span {
+	font-size: 18px;
+}
+
+.wrap #board-data .wrap p .detail-key {
+	display: inline-block;
+	width: 5em;
+	font-weight: 700;
+}
+
+#reply-data>.wrap {
+	margin: 30px 0;
+}
+
+#reply-data>.wrap p input {
+	padding: 3px 5px;
+}
+
+#reply-data>.wrap p button {
+	padding: 3px 5px;
+}

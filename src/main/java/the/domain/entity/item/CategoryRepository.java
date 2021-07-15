@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ShoesRepository extends JpaRepository<ShoesEntity, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long>{
 
-	List<ShoesEntity> findAllByShoesCategory(ShoesCategory shoesCategory);
+	Category findBySmall(SmallCategory sc);
 
+	List<Category> findAllByLarge(LargeCategory lc);
 
 }

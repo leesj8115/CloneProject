@@ -9,10 +9,20 @@
  */
 
 $(function() {
-	initHeader();
-	$("#navi-menu .left ul li").on("mouseover", showSubMenu);
-	$("#navi-menu-all>.wrap").on("mouseleave", hideSubMenu);
-	$("#navi-menu-all>.wrap table tr td ul li span").on("click", showItem);
+	$.ajax({
+		url: "/menu",
+		data: {},
+		method: "get",
+		success: function(result) {
+			$("#menu-input").html(result);
+			
+			initHeader();
+			$("#navi-menu .left ul li").on("mouseover", showSubMenu);
+			$("#navi-menu-all>.wrap").on("mouseleave", hideSubMenu);
+			$("#navi-menu-all>.wrap table tr td ul li span").on("click", showItem);
+		}
+		
+	});
 });
 
 function initHeader() {
@@ -22,11 +32,18 @@ function initHeader() {
 // 세부 메뉴 보여주는 함수
 function showSubMenu() {
 	var target = $(this).index();
+	
 	$("#navi-menu .left ul li").removeClass("choice");
 	$("#navi-menu .left ul li").eq(target).addClass("choice");
 	$("#navi-menu-all>.wrap").css({"height": "480px"});
 	$("#navi-menu-all>.wrap table").hide();
-	$("#navi-menu-all>.wrap table").eq(target).show();
+	
+	if (target <= 2) {
+		$("#navi-menu-all>.wrap table").eq(0).show();
+	} else {
+		$("#navi-menu-all>.wrap table").eq(target - 2).show();
+	}
+	
 }
 
 // 세부 메뉴 숨기는 함수
@@ -47,8 +64,8 @@ function pageGoPost(data) {
 	}
 	
 	var tempForm = $("<form>", {
-		method: "post",
 		action: data.url,
+		method: "post",
 		target: data.target,
 		html: inputTagData
 	}).appendTo("body");
@@ -67,13 +84,15 @@ function showItem() {
 	// smallCategory = 전체, 운동화, 런닝화.. 의 순..
 	var smallCategory = $(this).parents("li").index();
 	
+	//alert(tag + ", " + largeCategory + ", " + smallCategory);
+	
 	pageGoPost({
 		url: "/item",
 		target: "_self",
 		vals: [
 			["tag", tag],
-			["largeCategory", largeCategory],
-			["smallCategory", smallCategory]
+			["large", largeCategory],
+			["small", smallCategory]
 		]
 	});
 }

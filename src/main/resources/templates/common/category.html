@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<tr>
+	<th>HOT SPOT</th>
+	<th:block th:each="large : ${large}">
+		<th>[[${large.getTitle()}]]</th>
+	</th:block>
+	<th>추천 기획전</th>
+</tr>
+<tr>
+	<td>
+		<!-- HOT SPOT의 세부 메뉴 -->
+		<ul>
+			<li><span>신상품</span></li>
+			<li><span>온라인 단독</span></li>
+		</ul>
+	</td>
+	
+	<th:block th:each="large : ${large}">
+		<td>
+			<ul>
+				<li><span>전체</span></li>
+				<th:block th:each="small : ${small}" th:if="${small.getLarge()} == ${large.getTitle()}">
+					<li><span>[[${small.getTitle()}]]</span></li>
+				</th:block>
+				</ul>
+		</td>
+	</th:block>
+		<td>
+			<!-- 추천기획전의 이미지 -->
+			<div><!-- 이미지 삽입 영역 --></div>
+		</td>
+</tr>
+
+</html>

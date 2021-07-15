@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSJmall : 게시판 글쓰기</title>
+	<link rel="stylesheet" href="/css/board/detail.css">
+	<script src="/js/board/detail.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>게시판 페이지</h1>
+		<div class="wrap">
+			<a href="/board/list">게시판 페이지로 이동</a>
+			<p class="title">게시판 상세 정보</p>
+			<hr>
+			
+			<section id="board-data">
+				<div class="wrap">
+					<p>
+						<span class="detail-key">번호</span>
+						<span class="detail-value">[[${detail.no}]]</span>
+					</p>
+					<p>
+						<span class="detail-key">제목</span>
+						<span class="detail-value">[[${detail.subject}]]</span>
+					</p>
+					<p>
+						<span class="detail-key">작성자</span>
+						<span class="detail-value">[[${detail.writer}]]</span>
+					</p>
+					<p>
+						<span class="detail-key">내용</span>
+						<span class="detail-value">[[${detail.content}]]</span>
+					</p>
+					<p>
+						<span class="detail-key">조회수</span>
+						<span class="detail-value">[[${detail.readCount}]]</span>
+					</p>
+					<p>
+						<span class="detail-key">작성일</span>
+						<span class="detail-value">[[${detail.getCreatedDate()}]]</span>
+					</p>
+				</div>
+			</section>
+			
+			<hr>
+			
+			<section id="reply-data">
+				<div class="wrap">
+					<p>
+						<input id="bno" type="hidden" th:value="${detail.no}"  />
+						<input id="reply" type="text" placeholder="댓글 입력" />
+						<input id="writer" type="text" placeholder="작성자" />
+						<button id="btn-reply" type="button">댓글 등록</button>
+					</p>
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

@@ -1,18 +1,27 @@
 package the.domain.dto.item;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import the.domain.entity.file.FileEntity;
+import the.domain.entity.item.Category;
 
 
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 public class ItemDto {
-	private String largeCategory;
+	
+	private long no;
+	
+	private String smallCategory;
+	
 	private String brand;
+	
 	private String name;
+	
 	private long price;
-	private long salePrice;	// 비어 있을 때, null을 (String)"" 으로 처리해서 에러 발생 ㅠㅠ
-	// 파일은 별도로 관리
+	
+	private long sellPrice;
+	
 }

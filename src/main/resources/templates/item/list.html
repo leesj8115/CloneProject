@@ -13,7 +13,7 @@
 		<h1>상품 목록</h1>
 			<section id="title">
 				<h1>상품 목록 분류</h1>
-				<p>[[${largeCategory}]]</p>
+				<p>[[${large}]]</p>
 				<div>
 					<!-- 신발, 의류, 용품에 따라 다른 메뉴 항목 출력 -->
 					<ul class="flex">
@@ -25,7 +25,7 @@
 					<script th:inline="javascript">
 						// 앞에서 선택한 메뉴의 값에 해당하는 index의
 						// 아이템에 'clicked' 클래스를 추가
-						var clicked = Number("[[${smallSelect}]]");
+						var clicked = /*[[${smallSelect}]]*/ '';
 						$("#title div ul li").eq(clicked).addClass("clicked");
 					</script>
 				</div>

@@ -11,7 +11,6 @@
     (ajax)
 */
 
-
 $(function() {
 	pageInit();
 	
@@ -29,6 +28,9 @@ function pageInit() {
 function changeClicked() {
     $("#title div ul li").removeClass("clicked");
     $(this).addClass("clicked");
+
+	// 다른 소분류를 클릭할 때마다, 바뀌는 소분류에 따라 목록을 다르게 불러옴
+	// loadItem();
 }
 
 function showHover() {
@@ -41,32 +43,27 @@ function showNormal() {
     $(this).find(".img-hover").hide();
 }
 
+
+
+
 function loadItem() {
 	// 어떤 값을 불러와야하는지 확인
-	var _large = $("#title>p").text();
+	var large = $("#title>p").text();
 	
-	var large;
-	if (_large === "신발") {
-		large = "SHOES";
-	} else if (_large === "의류") {
-		large = "CLOTHES";
-	} else if (_large === "용품") {
-		large = "SUPPLIES";
-	}
+	var small = $("#title div ul li.clicked").text();
 	
-	// smallCategory는 large에 따라 변경되기 때문에, enum 이름 값으로 넘길 수 없음
-	// index 값으로 넘기겠습니다.
-	var small = $("#title div ul li.clicked").index();
+	
+	
+	// 필요한 값은 문자열로 보내 ㅠㅠㅠㅠ
 	
 	$.ajax({
 		url: "/item/load",
 		data: {
-			largeCategory: large,
-			smallCategory: small
+			large: large,
+			small: small
 		},
 		method: "POST",
 		success: function(result) {
-			alert(result);
 			$("#item-list>.wrap table").html(result);
 		}
 	});

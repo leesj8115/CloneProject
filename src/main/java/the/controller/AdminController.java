@@ -15,16 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.item.ItemDto;
 import the.domain.entity.file.FileEntity;
-import the.domain.entity.item.ClothesCategory;
-import the.domain.entity.item.Item;
+import the.domain.entity.item.ItemEntity;
 import the.domain.entity.item.LargeCategory;
-import the.domain.entity.item.ShoesCategory;
-import the.domain.entity.item.SuppliesCategory;
+import the.domain.entity.item.SmallCategory;
 import the.service.file.FileService;
-import the.service.item.ClothesService;
 import the.service.item.ItemService;
-import the.service.item.ShoesService;
-import the.service.item.SuppliesService;
 
 @Slf4j
 @Controller
@@ -35,16 +30,6 @@ public class AdminController {
     
     @Autowired
     private ItemService itemService;
-    
-    @Autowired
-    private ShoesService shoesService;
-
-    @Autowired
-    private ClothesService clothesService;
-
-    @Autowired
-    private SuppliesService suppliesService;
-    
     
     // 상품 작성 완료시 사용하는 flag
 	private boolean writeFlag = false;
@@ -64,28 +49,31 @@ public class AdminController {
     @GetMapping("/admin/item")
     public String item(Model model) {
 
-        // 상품 등록 페이지로 이동
-        // 이동간에 목록 출력에 필요한 데이터 전달
-        // largeCategory, smallCategory 전달
-
-        LargeCategory[] lc = LargeCategory.values();
-
-        model.addAttribute("largeCategory", lc);
-
-        ShoesCategory[] shoesCategories = ShoesCategory.values();
-        ClothesCategory[] clothesCategories = ClothesCategory.values();
-        SuppliesCategory[] suppliesCategories = SuppliesCategory.values();
-
-        model.addAttribute("shoesCategory", shoesCategories);
-        model.addAttribute("clothesCategory", clothesCategories);
-        model.addAttribute("suppliesCategory", suppliesCategories);
-
-        
-        if (writeFlag == true) {
-        	writeFlag = false;
-        	model.addAttribute("msg", "상품 등록을 완료했습니다.");
-        }
-        
+    	
+    	LargeCategory[] large = LargeCategory.values();
+    	SmallCategory[] small = SmallCategory.values();
+    	
+    	model.addAttribute("large", large);
+    	model.addAttribute("small", small);
+    	
+    	//model.addAttribute("msg", "테스트");
+    	
+    	return "/admin/item";
+    }
+    
+    @Transactional
+    @PostMapping("/admin/item/write")
+    public String itemWrite(ItemDto dto, @RequestParam("files[]") List<MultipartFile> files, Model model) {
+    	log.debug("상품 등록 실행");
+    	
+    	// item을 등록하기 위해 차근차근 처리합시다..
+    	
+    	// 이미지부터 처리
+    	List<FileEntity> photo = fileService.saveMultiFiles(files, "item");
+    	
+    	// 엔티티 생성
+    	itemService.insert(dto, photo, model);
+    	
     	return "/admin/item";
     }
     
@@ -100,50 +88,4 @@ public class AdminController {
 
         return "/admin/file";
     }
-    
-    @Transactional
-    @PostMapping("/admin/item/write")
-    public String itemWrite(ItemDto dto, String smallCategory, @RequestParam("files[]") List<MultipartFile> files, Model model) {
-
-        log.debug("상품 등록 실행");
-        
-    	// item 작성하는 곳
-
-    	// shoesEntity를 만들려면 ItemEntity를 만들어야하고,
-    	// ItemEntity를 만들려면 거기에 들어가는 stockList와 fileList를 연결해야함..
-
-    	// 이미지 파일부터 올립시다..
-        List<FileEntity> photo = fileService.saveMultiFiles(files, "item");
-
-    	// item 엔티티 만듭시다 이제
-        Item item = itemService.insert(dto, photo);
-
-    	// LargeCategory에 따라 나중에 신발, 의류, 용품이 나뉘게 된다
-        LargeCategory large = item.getLargeCategory();
-
-        if (large == LargeCategory.SHOES) {
-    		// 신발
-            log.debug("대분류 : 신발 에 대한 등록 서비스 실행");
-            shoesService.insert(smallCategory, item);
-        } else if (large == LargeCategory.CLOTHES) {
-    		// 의류
-            log.debug("대분류 : 의류 에 대한 등록 서비스 실행");
-            clothesService.insert(smallCategory, item);
-
-        } else if (large == LargeCategory.SUPPLIES) {
-    		// 용품
-            log.debug("대분류 : 용품 에 대한 등록 서비스 실행");
-            suppliesService.insert(smallCategory, item);
-        } else {
-            log.debug("이게 보인다면 뭔가.. 뭔가 잘못된 것입니다");
-            return null;
-        }
-
-        log.debug("등록 완료!!");
-        
-        writeFlag = true;
-
-        return "redirect:/admin/item";
-    }
-    
 }

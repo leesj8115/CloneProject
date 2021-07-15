@@ -131,6 +131,10 @@ header>.wrap hr {
 	color: #F77527;
 }
 
+#navi-menu .right ul li:hover a {
+	color: #F77527;
+}
+
 #navi-menu div ul #ico-navi {
 	display: inline-block;
 	width: 48px;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - LSJmall : 게시판 글쓰기</title>
+	<link rel="stylesheet" href="/css/board/write.css">
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<h1>게시판 페이지</h1>
+		<div class="wrap">
+			<a href="/board/list">게시판 페이지로 이동</a>
+			
+			<p class="tit">게시판 글쓰기 페이지</p>
+			<hr>
+			<form action="/board/write" method="post">
+				<p>
+					<!-- 1. name=subject 적용 -->
+					<input type="text" name="subject"  placeholder="제목을 입력하세요">
+				</p>
+				<p>
+					<!-- 1. name=writer 적용 -->
+					<input type="text" name="writer" placeholder="작성자">
+				</p>
+				<p>
+					<!-- 1. name=content 적용 -->
+					<textarea rows="5" cols="50" name="content"></textarea>
+				</p>
+				<p>
+					<button type="submit">등록하기</button>
+				</p>
+			</form>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

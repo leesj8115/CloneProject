@@ -18,40 +18,30 @@
                 <h1>상품 등록 화면</h1>
                 <section id="item-upload">
                     <h1>상품 등록 폼</h1>
+                    <p class="title">상품 등록</p>
+                    <hr>
                     <form action="/admin/item/write" method="POST" enctype="multipart/form-data">
-                        <p class="title">상품 등록</p>
-                        <hr>
-                        <p class="msg">[[${msg}]]</p>
                         <p>
                             <label for="large">대분류</label>
                             <select id="large" name="largeCategory" required="required">
                                 <option value="">선택</option>
-                                <th:block th:each="lc : ${largeCategory}">
+                                <th:block th:each="lc : ${large}">
                                     <option th:value="${lc}" th:text="${lc.getTitle()}"></option>
                                 </th:block>
                             </select>
                         </p>
                         <p>
-                            <!-- 대분류 선택에 맞는 소분류 메뉴를 가져옴 -->
-                            <!-- 갯수가 몇 없어서, 미리 다 찍어놓고 가리기/보여주기 처리 예정 -->
+                            <!-- 소분류 -->
                             <label for="small">소분류</label>
                             <select id="small" name="smallCategory" required="required">
                                 <option value="">선택</option>
-                                <optgroup label="신발" class="opt-group" id="opt-shoes">
-                                    <th:block th:each="shoes : ${shoesCategory}">
-                                        <option th:value="${shoes}" th:text="${shoes.getTitle()}"></option>
-                                    </th:block>
-                                </optgroup>
-                                <optgroup label="의류" class="opt-group" id="opt-clothes">
-                                    <th:block th:each="clothes : ${clothesCategory}">
-                                        <option th:value="${clothes}" th:text="${clothes.getTitle()}"></option>
-                                    </th:block>
-                                </optgroup>
-                                <optgroup label="용품" class="opt-group" id="opt-supplies">
-                                    <th:block th:each="supplies : ${suppliesCategory}">
-                                        <option th:value="${supplies}" th:text="${supplies.getTitle()}"></option>
-                                    </th:block>
-                                </optgroup>
+                                <th:block th:each="lc : ${large}">
+                                	<optgroup th:label="${lc.getTitle()}" class="opt-group" th:id="'opt-'+${lc}">
+                                		<th:block th:each="sc : ${small}" th:if="${sc.getLarge()} == ${lc.getTitle()}">
+                                        	<option th:value="${sc}" th:text="${sc.getTitle()}"></option>
+                                    	</th:block>
+                                	</optgroup>
+                                </th:block>
                             </select>
                         </p>
                         <p>
@@ -60,26 +50,24 @@
                         </p>
                         <p>
                             <label for="item-name">제품명</label>
-                            <input type="text" id="item-name" name="name">
+                            <input type="text" id="item-name" name="name" required="required">
                         </p>
                         <p>
                             <label for="price">정가</label>
-                            <input type="number" id="price" name="price" min="0">
+                            <input type="number" id="price" name="price" min="0" required="required">
                         </p>
                         <p>
-                            <label for="sale-price">판매가</label>
-                            <input type="number" id="sale-price" name="salePrice" min="0" placeholder="미입력시 정가와 동일">
+                            <label for="sell-price">판매가</label>
+                            <input type="number" id="sell-price" name="sellPrice" min="0" required="required">
                         </p>
                         <p>
                             <label for="photo">제품사진 등록</label>
                             <input type="file" id="photo" name="files[]" multiple="multiple" required="required">
-                        </p>
-                        <p>
-                            아직 오류로 인해, 판매가 가 비워져서는 안됩ㄴ디ㅏ ㅠㅠㅠㅠㅠ
-                            판매가에 정가랑 동일한 값으로라도 써주세요..
+                            <span>한 장 이상의 제품 사진 등록이 필요합니다.</span>
                         </p>
                         <p>
                             <button type="submit">업로드</button>
+                            <span class="msg">[[${msg}]]</span>
                         </p>
                     </form>
                 </section>

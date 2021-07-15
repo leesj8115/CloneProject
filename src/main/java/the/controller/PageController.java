@@ -5,9 +5,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.MemberDetails;
+import the.domain.entity.item.LargeCategory;
+import the.domain.entity.item.SmallCategory;
 import the.service.file.FileService;
 
 @Slf4j
@@ -48,5 +51,13 @@ public class PageController {
 		return "/test";
 	}
 
-
+	@GetMapping("/menu")
+	public String large(Model model) {
+		
+		model.addAttribute("large", LargeCategory.values());
+		model.addAttribute("small", SmallCategory.values());
+		
+		return "/common/category";
+	}
+	
 }

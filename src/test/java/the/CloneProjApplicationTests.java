@@ -12,6 +12,10 @@ import the.domain.entity.MemberRepository;
 import the.domain.entity.MemberRole;
 import the.domain.entity.cs.faq.FaqEntity;
 import the.domain.entity.cs.faq.FaqRepository;
+import the.domain.entity.item.Category;
+import the.domain.entity.item.CategoryRepository;
+import the.domain.entity.item.LargeCategory;
+import the.domain.entity.item.SmallCategory;
 
 @SpringBootTest
 class CloneProjApplicationTests {
@@ -24,6 +28,9 @@ class CloneProjApplicationTests {
 	
 	@Autowired
 	FaqRepository faqRepository;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	@Test
 	void faq데이터생성() {
@@ -73,6 +80,27 @@ class CloneProjApplicationTests {
 		repository.save(entity);
 	}
 	
-	
+	@Test
+	void 카테고리테이블생성() {
+		
+		for(LargeCategory l : LargeCategory.values()) {
+			for (SmallCategory s : SmallCategory.values()) {
+				
+				if (l.getTitle() == s.getLarge()) {
+					
+					Category entity = Category.builder()
+							.large(l)
+							.small(s)
+							.build();
+					
+					categoryRepository.save(entity);
+					
+				}
+				
+				
+			}
+		}
+		
+	}
 
 }
