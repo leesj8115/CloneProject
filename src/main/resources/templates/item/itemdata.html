@@ -12,20 +12,23 @@
 				남/여
 			</p>
 			-->
-			<!-- LAZY 때문에 또 골치아프네 -->
-			<p th:value="${item.getPhoto}"></p>
-			<p class="item-brand">[[${item.getBrand}]]</p>
+
+			<th:block th:each="photo : ${photoList.get(item.no)}">
+				<!-- 저장된 사진 갯수만큼 반복하기로 함 -->
+				<img class="img-item" th:src="${photo.filePath}">
+			</th:block>
+			<p class="item-brand">[[${item.brand}]]</p>
 			<p class="flex">
 				<!-- <span class="item-tag">[오리지널 라인]</span> -->
-				<span class="item-name">[[${item.getName}]]</span>
+				<span class="item-name">[[${item.name}]]</span>
 			</p>
 			<p>
 				<!--정가-->
-				<th:block th:if="${item.getPrice()} != ${item.getSellPrice()}">
-					<sapn class="item-price">&#92; [[$item.getPrice}]]</sapn>
+				<th:block th:if="${item.price} != ${item.sellPrice}">
+					<sapn class="item-price">&#92; [[${item.price}]]</sapn>
 				</th:block>
 				<!--판매가-->
-				<span class="item-sell-price">&#92; [[${item.getSellPrice}]]</span>
+				<span class="item-sell-price">&#92; [[${item.sellPrice}]]</span>
 			</p>
 		</td>		
     </th:block>

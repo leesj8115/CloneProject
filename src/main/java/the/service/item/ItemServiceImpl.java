@@ -1,7 +1,9 @@
 package the.service.item;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -115,14 +117,26 @@ public class ItemServiceImpl implements ItemService {
 			result.addAll(items);
 		}
 		
-		for (ItemEntity e : result) {
-			log.debug("나온 아이템 = " + e.getNo() + "번 / " + e.getName());
-		}
-		
-		
 		// 상품 담아서 전달
 		model.addAttribute("items", result);
-		
+
+		// fetch = LAZY인 photo 도 따로 담아줘야 할듯
+		log.debug("photoList 각각 가져오기!!!!");
+
+		Map<Long, List<FileEntity>> photoList = new HashMap<>();
+
+		for (ItemEntity e : result) {
+			log.debug("나온 아이템 = " + e.getNo() + "번 / " + e.getName());
+			log.debug("사진 갯수 = " + e.getPhoto().size());
+
+			photoList.put(e.getNo(), e.getPhoto());
+		}
+
+		// 사진 데이터도 담아서 전달
+		model.addAttribute("photoList", photoList);
+
+		log.debug("총 계산된 사진 갯수 = " + photoList.size());
+
 	}
 
 	@Override

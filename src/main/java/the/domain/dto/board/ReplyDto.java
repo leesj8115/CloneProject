@@ -15,6 +15,12 @@ public class ReplyDto {
 	
 	public ReplyDto(Reply entity) {
 		// 엔티티 받아서 dto로 변환
+		this.no = entity.getNo();
+		this.reply = entity.getReply();
+		this.writer = entity.getWriter();
+		this.createdDate = entity.getCreatedDate();
+		this.updatedDate = entity.getUpdatedDate();
+		
 	}
 	
 }

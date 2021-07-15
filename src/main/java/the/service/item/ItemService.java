@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 
 import the.domain.dto.item.ItemDto;
 import the.domain.entity.file.FileEntity;
-import the.domain.entity.item.ItemEntity;
 
 public interface ItemService {
 

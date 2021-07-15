@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.extern.slf4j.Slf4j;
 import the.domain.dto.item.ItemDto;
 import the.domain.entity.file.FileEntity;
-import the.domain.entity.item.ItemEntity;
 import the.domain.entity.item.LargeCategory;
 import the.domain.entity.item.SmallCategory;
 import the.service.file.FileService;
@@ -49,32 +48,36 @@ public class AdminController {
     @GetMapping("/admin/item")
     public String item(Model model) {
 
-    	
-    	LargeCategory[] large = LargeCategory.values();
-    	SmallCategory[] small = SmallCategory.values();
-    	
-    	model.addAttribute("large", large);
-    	model.addAttribute("small", small);
-    	
-    	//model.addAttribute("msg", "테스트");
-    	
-    	return "/admin/item";
+        LargeCategory[] large = LargeCategory.values();
+        SmallCategory[] small = SmallCategory.values();
+        
+        model.addAttribute("large", large);
+        model.addAttribute("small", small);
+        
+        if (writeFlag == true) {
+            model.addAttribute("msg", "상품 등록을 완료했습니다.");
+            writeFlag = false;
+        }
+        
+        return "/admin/item";
     }
     
     @Transactional
     @PostMapping("/admin/item/write")
     public String itemWrite(ItemDto dto, @RequestParam("files[]") List<MultipartFile> files, Model model) {
-    	log.debug("상품 등록 실행");
-    	
+        log.debug("상품 등록 실행");
+        
     	// item을 등록하기 위해 차근차근 처리합시다..
-    	
+        
     	// 이미지부터 처리
-    	List<FileEntity> photo = fileService.saveMultiFiles(files, "item");
-    	
+        List<FileEntity> photo = fileService.saveMultiFiles(files, "item");
+        
     	// 엔티티 생성
-    	itemService.insert(dto, photo, model);
-    	
-    	return "/admin/item";
+        itemService.insert(dto, photo, model);
+        
+        writeFlag = true;   // 완료 msg 보내기 위한 변수
+
+        return "redirect:/admin/item";
     }
     
     // 파일 업로드

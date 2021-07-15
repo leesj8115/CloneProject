@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,16 +49,10 @@ public class ReplyServiceImpl implements ReplyService {
 		List<Reply> entity = replyRepository.findAllByBoardNo(bno);
 		
 		List<ReplyDto> dto = entity.stream()
-				.map(reply -> {
-					ReplyDto d;
-					d.setNo(reply.getNo());
-					d.setReply(reply.getReply());
-					d.setWriter(reply.)
-				})
+				.map(ReplyDto::new)
 				.collect(Collectors.toList());
 		
-		
-		mv.addObject("replies", null);
+		mv.addObject("replies", dto);
 		
 		return mv;
 	}

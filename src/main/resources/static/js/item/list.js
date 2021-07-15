@@ -30,7 +30,7 @@ function changeClicked() {
     $(this).addClass("clicked");
 
 	// 다른 소분류를 클릭할 때마다, 바뀌는 소분류에 따라 목록을 다르게 불러옴
-	// loadItem();
+	loadItem();
 }
 
 function showHover() {
@@ -54,7 +54,7 @@ function loadItem() {
 	
 	
 	
-	// 필요한 값은 문자열로 보내 ㅠㅠㅠㅠ
+	// 필요한 값은 문자열로 보내기로 함 ㅠㅠ
 	
 	$.ajax({
 		url: "/item/load",
