@@ -33,6 +33,10 @@ a {
 	justify-content: center;
 }
 
+.grid {
+	display: grid;
+}
+
 .view-size {
 	width: 1280px;
 	margin: 0 auto;

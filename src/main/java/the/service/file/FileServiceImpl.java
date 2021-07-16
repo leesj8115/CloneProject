@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
-import the.domain.dto.FileDto;
+import the.domain.dto.file.FileDto;
 import the.domain.entity.file.FileEntity;
 import the.domain.entity.file.FileRepository;
 
@@ -23,8 +23,8 @@ public class FileServiceImpl implements FileService {
     FileRepository repository;
     
     // rootPath은 작업 환경 (집 로컬, 외부 로컬, GCP Server)에 맞게 변경 필요
-    private String rootPath = "D:/workspace/cloneProj/src/main/resources/static/images";	// 집
-    // private String rootPath = "E:/spring/workspace/cloneProj/src/main/resources/static/images";	// 외부
+    // private String rootPath = "D:/workspace/cloneProj/src/main/resources/static/images";	// 집
+    private String rootPath = "E:/spring/workspace/cloneProj/src/main/resources/static/images";	// 외부
     // private String rootPath = "/home/leesj8115/src/root/WEB-INF/classes/static/images";		// 리눅스 서버 (GCP)
 
 	@Override

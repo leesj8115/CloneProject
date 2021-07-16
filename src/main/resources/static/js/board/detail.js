@@ -17,10 +17,11 @@ function getReplies() {
 	
 	// 자료를 가져올 때는 Get
 	$.ajax({
-		url: "/board/" + bno + "reply",
+		url: "/board/" + bno + "/reply",
 		type: "get",
-		success: function() {
-			
+		success: function(result) {
+			//alert(result);
+			$("#reply-list").html(result);
 		}
 	});
 }
@@ -39,7 +40,7 @@ function replyWrite() {
 		},
 		type: "post",
 		success: function() {
-			
+			getReplies();
 		}
 	});
 	

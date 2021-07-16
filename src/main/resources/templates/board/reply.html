@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- 게시글의 댓글 -->
+<ul th:each="dto : ${replies}" class="flex">
+	<li th:text="${dto.no}">댓글번호</li>
+	<li th:text="${dto.reply}">댓글내용</li>
+	<li th:text="${dto.writer}">작성자</li>
+	<li th:text="${dto.createdDate.toLocalDate}">작성일(날짜만)</li>
+</ul>
+
+
+</html>

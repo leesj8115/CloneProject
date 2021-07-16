@@ -26,27 +26,23 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Category {
 	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private long no;
+	private long id;	// 아이디 직접 계산하여 부여
+	// id는 0000 4자리로 이루어 지며
+	// 0--- : 앞의 1자리는 대분류 (1 부터 신발, 의류, 용품)
+	// -000 : 뒤의 3자리는 소분류 (001 부터 각 대분류의 하위 분류)
+	// 로 조합하여 생성, 부여한다.
 	
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Column
 	private LargeCategory large;	// 대분류 : 신발, 의류, 용품
 	
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Column
 	private SmallCategory small;	// 소분류 : 모두 다!
 	
-
-	
-	// TODO  
-	// OneToMany 의 default는 LAZY 이나, ItemService -> findByCategory에서 연산간
-	// category.getItems() 에서 LazyInitializationException 발생, LAZY 처리가 미흡함...
-	// 그래서 일단은 fetch를 EAGER로 설정...
-	
 	@Builder.Default
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
 	private List<ItemEntity> items = new ArrayList<>();
 	
 }

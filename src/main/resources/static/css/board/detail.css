@@ -44,3 +44,27 @@ main>.wrap {
 #reply-data>.wrap p button {
 	padding: 3px 5px;
 }
+
+#reply-data>.wrap #reply-list ul {
+	width: 50%;
+}
+
+#reply-data>.wrap #reply-list ul li:nth-child(1) {
+	flex: 1;
+}
+
+#reply-data>.wrap #reply-list ul li:nth-child(1) {
+	flex: 1;
+}
+
+#reply-data>.wrap #reply-list ul li:nth-child(2) {
+	flex: 10;
+}
+
+#reply-data>.wrap #reply-list ul li:nth-child(3) {
+	flex: 5;
+}
+
+#reply-data>.wrap #reply-list ul li:nth-child(4) {
+	flex: 5;
+}

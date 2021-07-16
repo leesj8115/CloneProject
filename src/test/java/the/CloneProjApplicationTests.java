@@ -31,6 +31,10 @@ class CloneProjApplicationTests {
 	
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	
+
+	
 
 	@Test
 	void faq데이터생성() {
@@ -83,24 +87,51 @@ class CloneProjApplicationTests {
 	@Test
 	void 카테고리테이블생성() {
 		
-		for(LargeCategory l : LargeCategory.values()) {
-			for (SmallCategory s : SmallCategory.values()) {
+		LargeCategory[] lc = LargeCategory.values();
+		SmallCategory[] sc = SmallCategory.values();
+		
+		for (int i = 0; i < lc.length; i++) {
+			
+			for (int k = 0; k < sc.length; k++) {
 				
-				if (l.getTitle() == s.getLarge()) {
+				if (lc[i].getTitle() == sc[k].getLarge()) {
+					
+					long id = ((i + 1) * 1000) + (k + 1);
 					
 					Category entity = Category.builder()
-							.large(l)
-							.small(s)
+							.id(id)
+							.large(lc[i])
+							.small(sc[k])
 							.build();
 					
 					categoryRepository.save(entity);
-					
 				}
-				
-				
 			}
 		}
+
 		
+	}
+	
+	
+	//@Test
+	void 카테고리아이디만들기점검() {
+		
+		LargeCategory[] lc = LargeCategory.values();
+		SmallCategory[] sc = SmallCategory.values();
+		
+		for (int i = 0; i < lc.length; i++) {
+			
+			for (int k = 0; k < sc.length; k++) {
+				
+				if (lc[i].getTitle() == sc[k].getLarge()) {
+					
+					long id = ((i + 1) * 1000) + (k + 1);
+					System.out.println(id + " = " + lc[i].getTitle() + ", " + sc[k].getTitle());
+					
+					
+				}
+			}
+		}
 	}
 
 }

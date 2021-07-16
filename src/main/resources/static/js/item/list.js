@@ -64,8 +64,19 @@ function loadItem() {
 		},
 		method: "POST",
 		success: function(result) {
-			$("#item-list>.wrap table").html(result);
+			$("#item-list>.wrap .grid").html(result);
+			$("#item-list>.wrap .grid .item-card").on("mouseover", ableHoverClass);
+			$("#item-list>.wrap .grid .item-card").on("mouseleave", disableHoverClass);
 		}
 	});
 	
+}
+
+function ableHoverClass() {
+	$("#item-list>.wrap .grid .item-card").removeClass("hover");
+	$(this).addClass("hover");
+}
+
+function disableHoverClass() {
+	$("#item-list>.wrap .grid .item-card").removeClass("hover");
 }

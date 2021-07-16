@@ -12,8 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import the.Handler.LoginFailureHandler;
 
-//import the.Handler.LoginSuccessHandler;
-
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

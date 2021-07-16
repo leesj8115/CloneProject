@@ -1,10 +1,13 @@
 package the.domain.entity.board;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -32,5 +35,8 @@ public class BoardEntity extends BaseDate {
 	@Column(nullable = false)
 	private String writer;//작성자
 	
+	// Reply와의 관계를 양방향으로 설정
+	@OneToMany(mappedBy = "board")	// 연결된 테이블의 필드명을 넣어준다
+	List<Reply> replies;
 
 }

@@ -60,27 +60,40 @@ main>.wrap {
     color: #F77527;
 }
 
-#item-list>.wrap table {
+#item-list>.wrap .grid {
     margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(350px, auto);
 }
 
-#item-list>.wrap table tr {
-    justify-content: space-between;
-}
-
-#item-list>.wrap table tr td {
+#item-list>.wrap .grid .item-card {
     text-align: center;
     border: 1px solid black;
     padding: 20px;
+    margin: 0 auto 20px;
     width: 275px;
+    cursor: pointer;
 }
 
-#item-list>.wrap table tr td img {
+#item-list>.wrap .grid .item-card img {
+	display: block;
     width: 245px;
     height: 245px;
 }
 
-#item-list>.wrap table tr td p {
+#item-list>.wrap .grid .item-card img:nth-child(2) {
+	display: none;
+}
+
+#item-list>.wrap .grid .item-card:hover img:nth-child(1) {
+	display: none;
+}
+
+#item-list>.wrap .grid .item-card:hover img:nth-child(2) {
+	display: block;	
+}
+
+#item-list>.wrap .grid .item-card p {
     text-align: left;
     width: 270px;
     display: block;
@@ -90,33 +103,33 @@ main>.wrap {
     margin: 5px 0;
 }
 
-#item-list>.wrap table tr td .gender {
+#item-list>.wrap .grid .item-card .gender {
     text-align: right;
 }
 
-#item-list>.wrap table tr td .item-brand {
+#item-list>.wrap .grid .item-card .item-brand {
     font-size: 13px;
 }
 
-#item-list>.wrap table tr td p .item-tag {
+#item-list>.wrap .grid .item-card p .item-tag {
     font-size: 13px;
     color: #222;
     margin-right: 3px;
 }
 
-#item-list>.wrap table tr td p .item-name {
+#item-list>.wrap .grid .item-card p .item-name {
     font-size: 13px;
     color: #666;
 }
 
-#item-list>.wrap table tr td p .item-price {
+#item-list>.wrap .grid .item-card p .item-price {
     color: #B1B1B1;
     font-size: 15px;
     font-weight: 700;
     text-decoration: line-through;
 }
 
-#item-list>.wrap table tr td p .item-sell-price {
+#item-list>.wrap .grid .item-card p .item-sell-price {
     color: #222;
     font-size: 15px;
     font-weight: 700;

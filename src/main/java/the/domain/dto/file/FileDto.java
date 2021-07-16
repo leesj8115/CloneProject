@@ -1,4 +1,4 @@
-package the.domain.dto;
+package the.domain.dto.file;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

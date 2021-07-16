@@ -15,7 +15,7 @@
 			<hr>
 			<div class="list">
 				<div class="flex end">
-					<a href="/board/write"><button>글쓰기</button></a>
+					<a href="/board/write"><button id="btn-write">글쓰기</button></a>
 				</div>
 				<ul class="flex title">
 					<li>글번호</li>
@@ -30,7 +30,8 @@
 					<li>
 						<!-- 2. detail 조회하기 위한 태그 구현 -->
 						<a th:href="|/board/${dto.no}|">
-							[[${dto.subject}]]
+							<span>[[${dto.subject}]]</span>
+							<span th:if="${dto.replyCount>0}">([[${dto.replyCount}]])</span>
 						</a>
 					</li>
 					<li th:text="${dto.readCount}">조회수</li>

@@ -2,35 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org" >
     <!-- ajax를 통해 뿌려줄 데이터 -->
 
-<tr>    
-    <th:block th:each="item : ${items}">
-		<td>
-			<!--
-			<img class="img-normal" th:src="${data.getItem().getPhotoList().get(0).getFilePath()}" alt="기본사진">
-			<img class="img-hover" src="/images/test/photo-1-hover.jpg" alt="호버사진">
-			<p class="gender">
-				남/여
-			</p>
-			-->
-
+<th:block th:each="item, k : ${items}">
+	<div class="item-card">	
+		<th:block th:if="${photoSize.get(item.no) == 1}">
+			<!-- 사진이 한장일 경우, 한장을 2번 보여줌 (hover와의 규칙성을 위해) -->
 			<th:block th:each="photo : ${photoList.get(item.no)}">
-				<!-- 저장된 사진 갯수만큼 반복하기로 함 -->
-				<img class="img-item" th:src="${photo.filePath}">
+				<img class="img-item" th:src="${photo.filePath}" alt="기본">
+				<img class="img-item" th:src="${photo.filePath}" alt="호버">
 			</th:block>
-			<p class="item-brand">[[${item.brand}]]</p>
-			<p class="flex">
-				<!-- <span class="item-tag">[오리지널 라인]</span> -->
-				<span class="item-name">[[${item.name}]]</span>
-			</p>
-			<p>
-				<!--정가-->
-				<th:block th:if="${item.price} != ${item.sellPrice}">
-					<sapn class="item-price">&#92; [[${item.price}]]</sapn>
-				</th:block>
-				<!--판매가-->
-				<span class="item-sell-price">&#92; [[${item.sellPrice}]]</span>
-			</p>
-		</td>		
-    </th:block>
-</tr>
+		</th:block>
+		<th:block th:unless="${photoSize.get(item.no) == 1}">
+			<!-- 사진이 3장 이상일 경우, 2장까지만 보여줌 -->
+			<th:block th:each="photo, i : ${photoList.get(item.no)}">
+				<img th:if="${i.index < 2}" class="img-item" th:src="${photo.filePath}" th:alt="${i.index}">
+			</th:block>
+		</th:block>
+		
+		<p class="item-brand">[[${item.brand}]]</p>
+		<p class="flex">
+			<!-- <span class="item-tag">[오리지널 라인]</span> -->
+			<span class="item-name">[[${item.name}]]</span>
+		</p>
+		<p>
+			<!--정가-->
+			<th:block th:if="${item.price} != ${item.sellPrice}">
+				<span class="item-price">&#92; [[${item.price}]]</span>
+			</th:block>
+			<!--판매가-->
+			<span class="item-sell-price">&#92; [[${item.sellPrice}]]</span>
+		</p>
+	</div>
+</th:block>
+
 </html>

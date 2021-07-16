@@ -15,6 +15,7 @@ public class BoardListDto {
 	private String writer;//작성자
 	private int readCount;//조회수
 	private LocalDateTime createdDate;//작성일
+	private int replyCount;	// 댓글 갯수
 	
 	public BoardListDto(BoardEntity entity) {
 		this.no = entity.getNo();
@@ -22,6 +23,7 @@ public class BoardListDto {
 		this.writer = entity.getWriter();
 		this.readCount = entity.getReadCount();
 		this.createdDate = entity.getCreatedDate();
+		this.replyCount = entity.getReplies().size();
 	}
 	
 	

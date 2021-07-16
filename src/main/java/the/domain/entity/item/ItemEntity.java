@@ -47,7 +47,7 @@ public class ItemEntity {
 	// 파일은 Item 기준 일대다 단방향으로 설정
 	// OneToMany default = LAZY
 	@OneToMany
-	@JoinColumn(name="item_no")
+	@JoinColumn(name = "item_no")
 	@Builder.Default
 	List<FileEntity> photo = new ArrayList<>();		// 제품 사진
 	
@@ -57,7 +57,7 @@ public class ItemEntity {
 	private List<StockEntity> stocks = new ArrayList<>();
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_no")
+	@JoinColumn(name = "category_id")
 	private Category category;	// 카테고리!
 	
 }

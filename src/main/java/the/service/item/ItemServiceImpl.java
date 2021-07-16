@@ -37,13 +37,37 @@ public class ItemServiceImpl implements ItemService {
 	public void insert(ItemDto dto, List<FileEntity> photo, Model model) {
 
 		// 카테고리 찾아서 연결하기
+		SmallCategory[] sc = SmallCategory.values();
+		LargeCategory[] lc = LargeCategory.values();
+		long categoryId = 0;
 		
-		SmallCategory sc = SmallCategory.valueOf(dto.getSmallCategory());
+		SmallCategory s = null;
+		LargeCategory l = null;
 		
-		Category category = categoryRepository.findBySmall(sc);
+		for (int i = 0; i < sc.length; i++) {
+			if (sc[i].getTitle().equals(dto.getSmallCategory())) {
+				// 해당하는 소분류 값을 찾아냈다면
+				
+				for (int k = 0; k < lc.length; k++) {
+					if (sc[i].getLarge().equals(lc[k].getTitle())) {
+						// 대분류 설정
+						categoryId += (k + 1) * 1000;
+						l = lc[k];
+						break;
+					}
+					
+				}
+				
+				// 소분류 설정
+				categoryId += (i + 1);
+				s = sc[i];
+				break;
+			}
+		}
 		
-		log.debug("입력받은 카테고리 = " + category);
+		log.debug("카테고리 id = " + categoryId);
 		
+		Category category = Category.builder().id(categoryId).build();
 		
 		ItemEntity entity = ItemEntity.builder()
 				.brand(dto.getBrand())
@@ -73,6 +97,7 @@ public class ItemServiceImpl implements ItemService {
 	public void findByCategory(String large, String small, Model model) {
 		// 입력받은 선택 메뉴에 따라 다른 결과를 조회하고 보내줌
 		
+		// 대분류 처리
 		// 1빼서 처리하는 이유 => large로 들어오는 값이 메뉴의 index라서... 0 이 HOT SPOT이기 때문...
 		LargeCategory[] lcList = LargeCategory.values();
 		
@@ -84,7 +109,7 @@ public class ItemServiceImpl implements ItemService {
 			}
 		}
 		
-		List<ItemEntity> result = new ArrayList<>();
+		List<ItemEntity> result = new ArrayList<>();		
 		
 		
 		if (small.equals("전체")) {
@@ -119,23 +144,22 @@ public class ItemServiceImpl implements ItemService {
 		
 		// 상품 담아서 전달
 		model.addAttribute("items", result);
-
+		
+		
 		// fetch = LAZY인 photo 도 따로 담아줘야 할듯
 		log.debug("photoList 각각 가져오기!!!!");
 
-		Map<Long, List<FileEntity>> photoList = new HashMap<>();
+		Map<Long, List<FileEntity>> photoList = new HashMap<>();	// 사진 파일 리스트
+		Map<Long, Integer> photoSize = new HashMap<>();				// 사진 파일 갯수
 
 		for (ItemEntity e : result) {
-			log.debug("나온 아이템 = " + e.getNo() + "번 / " + e.getName());
-			log.debug("사진 갯수 = " + e.getPhoto().size());
-
 			photoList.put(e.getNo(), e.getPhoto());
+			photoSize.put(e.getNo(), e.getPhoto().size());
 		}
 
 		// 사진 데이터도 담아서 전달
 		model.addAttribute("photoList", photoList);
-
-		log.debug("총 계산된 사진 갯수 = " + photoList.size());
+		model.addAttribute("photoSize", photoSize);
 
 	}
 
