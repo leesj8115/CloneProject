@@ -44,6 +44,7 @@ main>.wrap section:not(:first-child) {
     background-color: #d4d4d4;
     border-radius: 50%;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 #visual>.wrap .bullet li.target {

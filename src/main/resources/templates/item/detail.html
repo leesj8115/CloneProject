@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/common/commons::head"></th:block>
+	<title>클론 코딩 - [[${no}]]</title>
+	<link rel="stylesheet" href="/css/item/list.css">
+	<script src="/js/item/list.js"></script>
+</head>
+<body>
+	<header th:insert="/common/commons::header"></header>
+	<main>
+		<div class="wrap">
+			<h1>상품 상세 페이지</h1>
+			<section id="item-image">
+				<h1>상품 이미지 영역</h1>
+				<div class="wrap">
+					
+				</div>
+			</section>
+			<section id="title">
+				<h1>상품 상세 페이지</h1>
+				<p>제목</p>
+				<div class="wrap">
+					여기는 내용
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer  th:insert="/common/commons::footer"></footer>
+</body>
+</html>

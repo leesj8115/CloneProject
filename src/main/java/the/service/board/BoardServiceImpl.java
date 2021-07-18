@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import the.domain.dto.board.BoardDetailDto;
 import the.domain.dto.board.BoardListDto;
 import the.domain.dto.board.BoardWriteDto;
-import the.domain.entity.board.BoardEntity;
 import the.domain.entity.board.BoardEntityRepository;
 
 @Service

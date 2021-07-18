@@ -37,38 +37,43 @@ public class ItemServiceImpl implements ItemService {
 	public void insert(ItemDto dto, List<FileEntity> photo, Model model) {
 
 		// 카테고리 찾아서 연결하기
-		SmallCategory[] sc = SmallCategory.values();
 		LargeCategory[] lc = LargeCategory.values();
+		SmallCategory[] sc = SmallCategory.values();
 		long categoryId = 0;
+
+		System.out.println("소분류 입력 : " + dto.getSmallCategory());
 		
-		SmallCategory s = null;
-		LargeCategory l = null;
-		
+		SmallCategory s = SmallCategory.valueOf(dto.getSmallCategory());
+
+
+		// 찾아낸 소분류를 통해, category id 계산
 		for (int i = 0; i < sc.length; i++) {
-			if (sc[i].getTitle().equals(dto.getSmallCategory())) {
+			
+			if (sc[i] == s) {
 				// 해당하는 소분류 값을 찾아냈다면
 				
 				for (int k = 0; k < lc.length; k++) {
 					if (sc[i].getLarge().equals(lc[k].getTitle())) {
 						// 대분류 설정
 						categoryId += (k + 1) * 1000;
-						l = lc[k];
 						break;
 					}
-					
 				}
 				
 				// 소분류 설정
 				categoryId += (i + 1);
-				s = sc[i];
 				break;
 			}
 		}
 		
 		log.debug("카테고리 id = " + categoryId);
-		
-		Category category = Category.builder().id(categoryId).build();
-		
+
+		// id 값만 넣어서 넘기려고 했더니.. 뜬금없이 id에서 PRIMARY 조건에서 위반된다고 하면서 SQL 실행이 안됨
+		// builder를 통해서 아이디를 생성해서 넘기는 건.. 다른 객체로 판단하는지도
+		Category category = categoryRepository.findById(categoryId).get();
+
+		log.debug("찾아낸 카테고리 = " + category);
+
 		ItemEntity entity = ItemEntity.builder()
 				.brand(dto.getBrand())
 				.name(dto.getName())
@@ -83,7 +88,6 @@ public class ItemServiceImpl implements ItemService {
 		}
 		
 		// 카테고리 연결
-		
 		ItemEntity result = itemRepository.save(entity);
 		
 		if (result != null) {
