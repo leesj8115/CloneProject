@@ -1,12 +1,20 @@
 # CloneProject
-CloneProject using spring boot, JPA, MySQL
+배운 기술을 활용하여 [LSNmall](https://www.lsnmall.com/)을 바탕으로 제작했습니다.
 
-배운 기술을 활용하여 [LSNmall](https://www.lsnmall.com/)을 바탕으로 제작 중에 있습니다.
+## 사용 기술
+- Spring Boot
+- JPA
+- MySQL
+- Thymeleaf
+- jQuery
 
-- 테스트 아이디 : test1@test.com / 1234
-- 관리자 아이디 : admin / admin
+## 구현한 내용
+- 메인 페이지, 상품 목록, 고객 센터의 게시판 일부 구현
+- oauth를 통한 구글 로그인 추가
 
-## 🚧 해야할 일
-1. 상품 상세 페이지 구현!! 
-2. 이후 장바구니 구현!
-3. 이후 결제 API 연결! ( ex) 아임포트)
+## 기간
+- 6월~7월 약 한달간
+
+## 프로젝트 종료
+- 부스트캠프 챌린지로 인해 중단, 다른 프로젝트를 하고자 여기서 마무리합니다. 세부 기능을 많이 추가하지 못해 아쉽지만, 처음 혼자 해본 결과물인만큼 더 오래 붙잡기보다 다른 걸 해보고자 합니다. 
+
